@@ -1,0 +1,15 @@
+/* TEAM */
+
+Your team here.
+
+/* SITE */
+
+Last update: 2025/01
+Language: English
+Standards: HTML5, CSS3, ECMAScript 2024
+Platform: Next.js 15, React 19
+Backend: Convex
+Authentication: Clerk
+Styling: Tailwind CSS 4, Radix UI
+Hosting: Vercel
+Analytics: PostHog

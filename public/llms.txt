@@ -1,0 +1,22 @@
+# SaaS Starter Kit
+
+> A production-ready SaaS starter kit built with Next.js 15, React 19, Convex, and Clerk.
+
+## About
+
+This is a SaaS application with authentication, payments, team management, and email automation built in.
+
+## Key Pages
+
+- / - Homepage with product overview and pricing
+- /blog - Blog articles and updates
+- /sign-up - Create a free account
+- /sign-in - Sign in to your account
+
+## Technical
+
+- Built with Next.js 15 and React 19
+- Real-time backend with Convex
+- Authentication with Clerk
+- Payments with Lemon Squeezy
+- Styling with Tailwind CSS 4

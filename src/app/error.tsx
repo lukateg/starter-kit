@@ -1,0 +1,48 @@
+"use client";
+
+import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { AlertTriangle } from "lucide-react";
+import Link from "next/link";
+
+/**
+ * Global Error Boundary
+ *
+ * Catches errors in all pages except root layout errors.
+ * For root layout errors, see global-error.tsx.
+ */
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    // Log error for debugging (only visible in console, not to users)
+    console.error("Error boundary caught:", error);
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-8">
+      <div className="flex max-w-md flex-col items-center text-center">
+        <div className="mb-6 rounded-full bg-red-50 p-4">
+          <AlertTriangle className="h-12 w-12 text-red-500" />
+        </div>
+        <h1 className="mb-2 text-2xl font-semibold text-gray-900">
+          Something Went Wrong
+        </h1>
+        <p className="mb-6 text-gray-600">
+          We encountered an unexpected error. Please try again. If the problem
+          persists, contact support.
+        </p>
+        <div className="flex gap-3">
+          <Button onClick={reset}>Try Again</Button>
+          <Button variant="outline" asChild>
+            <Link href="/">Go to Home</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
