@@ -15,6 +15,11 @@ import {
   Layers,
   Lock,
   Palette,
+  Star,
+  Search,
+  TrendingUp,
+  ClipboardList,
+  Upload,
 } from "lucide-react";
 import FAQItem from "../components/FAQItem";
 import { TrackedCTALink } from "@/components/app/tracked-cta-link";
@@ -24,6 +29,14 @@ import g2Logo from "../../../public/logos/g2.svg";
 import capterraLogo from "../../../public/logos/capterra.svg";
 import getappLogo from "../../../public/logos/getapp.svg";
 import trustpilotLogo from "../../../public/logos/trustpilot.svg";
+
+import mastercardIcon from "../../../public/icons/mastercard.svg";
+import visaIcon from "../../../public/icons/visacard.svg";
+import amexIcon from "../../../public/icons/amexcard.svg";
+import maestroIcon from "../../../public/icons/maestrocard.svg";
+import applepayIcon from "../../../public/icons/applepay.svg";
+import googlepayIcon from "../../../public/icons/googlepay.svg";
+import profileImg from "../../../public/profile-img.png";
 
 const faqData = [
   {
@@ -399,6 +412,7 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="bg-primary/3 py-20">
         <div className="container mx-auto px-4 max-w-7xl">
+          {/* Title and description */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-4xl font-semibold text-foreground mb-4">
               Simple, Transparent Pricing
@@ -409,26 +423,40 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Top feature bar */}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16">
+            {[
+              { icon: Search, title: "Smart Search", subtitle: "Find what you need" },
+              { icon: FileText, title: "Unlimited Projects", subtitle: "No project limits" },
+              { icon: Settings2, title: "Automations", subtitle: "Zero manual work" },
+              { icon: TrendingUp, title: "Analytics", subtitle: "Track your growth" },
+            ].map((feature, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <feature.icon className="w-5 h-5 text-muted-foreground" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">{feature.title}</p>
+                  <p className="text-sm text-muted-foreground">{feature.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
           {/* Main pricing grid */}
           <div className="grid lg:grid-cols-2 max-w-5xl mx-auto">
-            {/* Left - Starter Package */}
+            {/* Left - Pricing Card */}
             <div className="bg-background rounded-l-sm p-8 border border-border">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <Zap className="w-4 h-4" />
                 <span>630 credits</span>
               </div>
 
-              <h3 className="text-3xl font-bold text-foreground mb-1">
-                Starter
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                Perfect for getting started
-              </p>
+              <h3 className="text-3xl font-bold text-foreground mb-1">Standard</h3>
+              <p className="text-muted-foreground mb-4">Perfect for getting started</p>
 
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-xl text-muted-foreground line-through">
-                  $138
-                </span>
+                <span className="text-xl text-muted-foreground line-through">$138</span>
                 <span className="text-5xl font-bold text-foreground">$69</span>
                 <span className="text-muted-foreground">one-time</span>
               </div>
@@ -438,14 +466,12 @@ export default function Home() {
                 variant="default"
                 size="lg"
                 className="w-full mb-4"
-                eventData={{ button_location: "pricing_starter" }}
+                eventData={{ button_location: "pricing_standard" }}
               >
                 Get Started
               </TrackedCTALink>
 
-              <p className="text-sm text-muted-foreground mb-6">
-                One-time payment. Credits never expire.
-              </p>
+              <p className="text-sm text-muted-foreground mb-6">One-time payment. Credits never expire.</p>
 
               <div className="space-y-3">
                 {[
@@ -464,65 +490,86 @@ export default function Home() {
                 ))}
               </div>
 
+              {/* Refund policy and payment methods */}
               <div className="mt-6 pt-4 border-t border-border">
                 <p className="text-xs text-muted-foreground mb-1">
-                  We offer a 60-day money-back policy. By purchasing, you agree
-                  to our terms of service.
+                  We offer a 60-day money-back policy. By purchasing, you agree to our terms of service.
                 </p>
+                <div className="flex items-start justify-start gap-2">
+                  <Image src={mastercardIcon} alt="Mastercard" className="h-6 w-auto" />
+                  <Image src={visaIcon} alt="Visa" className="h-6 w-auto" />
+                  <Image src={amexIcon} alt="American Express" className="h-6 w-auto" />
+                  <Image src={maestroIcon} alt="Maestro" className="h-6 w-auto" />
+                  <Image src={applepayIcon} alt="Apple Pay" className="h-6 w-auto" />
+                  <Image src={googlepayIcon} alt="Google Pay" className="h-6 w-auto" />
+                </div>
               </div>
             </div>
 
-            {/* Right - Growth Package */}
+            {/* Right - Features + Testimonial */}
             <div className="bg-accent rounded-r-sm p-8 border border-border flex flex-col">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                <Zap className="w-4 h-4" />
-                <span>1,800 credits</span>
-              </div>
+              <h4 className="text-2xl font-bold text-foreground mb-2">All-in-One Solution</h4>
+              <p className="text-muted-foreground mb-6">Everything you need to launch and grow your product</p>
 
-              <h3 className="text-3xl font-bold text-foreground mb-1">
-                Growth
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                For teams scaling their product
-              </p>
-
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-xl text-muted-foreground line-through">
-                  $310
-                </span>
-                <span className="text-5xl font-bold text-foreground">$169</span>
-                <span className="text-muted-foreground">one-time</span>
-              </div>
-
-              <TrackedCTALink
-                href="/app"
-                variant="default"
-                size="lg"
-                className="w-full mb-4"
-                eventData={{ button_location: "pricing_growth" }}
-              >
-                Get Growth Package
-              </TrackedCTALink>
-
-              <p className="text-sm text-muted-foreground mb-6">
-                Save $38 compared to buying Starter 3x. Credits never expire.
-              </p>
-
-              <div className="space-y-3 flex-grow">
+              <div className="space-y-5 flex-grow">
                 {[
-                  "1,800 credits to use on any action",
-                  "Everything in Starter, plus:",
-                  "Extended team collaboration",
-                  "Advanced analytics & reporting",
-                  "Priority email support",
-                  "Early access to new features",
-                  "Custom integrations support",
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-foreground flex-shrink-0" />
-                    <span className="text-foreground">{feature}</span>
+                  {
+                    icon: ClipboardList,
+                    title: "Complete Dashboard",
+                    description: "Full admin dashboard with analytics, user management, and real-time data.",
+                  },
+                  {
+                    icon: CreditCard,
+                    title: "Built-in Payments",
+                    description: "Credit-based payments with packages, usage tracking, and automated billing.",
+                  },
+                  {
+                    icon: Upload,
+                    title: "Team Collaboration",
+                    description: "Invite team members, manage roles, and collaborate on projects together.",
+                  },
+                  {
+                    icon: TrendingUp,
+                    title: "Analytics & Insights",
+                    description: "Track user behavior, monitor growth metrics, and make data-driven decisions.",
+                  },
+                ].map((item, index) => (
+                  <div key={index} className="flex gap-4">
+                    <div className="w-10 h-10 rounded-sm bg-muted flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-foreground">{item.title}</h5>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Founder Testimonial — Replace with your own photo and quote */}
+              <div className="mt-8 pt-6 border-t border-border">
+                <div className="flex gap-1 mb-3">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-foreground italic mb-4">
+                  &quot;Replace this with a testimonial from your first customer or your own
+                  founder quote about why you built the product.&quot;
+                </p>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={profileImg}
+                    alt="Founder"
+                    className="w-10 h-10 rounded-full object-cover"
+                    width={40}
+                    height={40}
+                  />
+                  <div>
+                    <p className="font-semibold text-foreground">Your Name</p>
+                    <p className="text-sm text-muted-foreground">Founder of Your App</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
