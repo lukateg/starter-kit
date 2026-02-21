@@ -64,11 +64,13 @@ Before building or modifying ANY feature with a corresponding DOCS/CORE/ file, y
 | Authentication, Clerk, webhooks, team invites | `DOCS/CORE/AUTHENTICATION.md` |
 | Onboarding flow, new user experience | `DOCS/CORE/ONBOARDING.md` |
 | Landing page sections, conversion patterns | `DOCS/CORE/LANDING_PAGE.md` |
+| Marketing page copy, conversion rules, visual constraints | `DOCS/CORE/MARKETING_PAGES.md` |
 | Email sending, automation sequences | `DOCS/CORE/EMAIL_AUTOMATIONS.md` |
 | Performance, Core Web Vitals | `DOCS/CORE/TECHNICAL_SEO_PERFORMANCE.md` |
 | Meta Pixel, conversion tracking | `DOCS/CORE/META_PIXEL_SETUP.md` |
 | Retention, cancellation, inactivity, re-engagement | `DOCS/CORE/RETENTION.md` |
 | MCP server configuration | `DOCS/CORE/MCP_SETUP.md` |
+| Any public-facing page (SEO copywriting, keywords, pSEO) | `DOCS/CORE/SEO_BEST_PRACTICES.md` |
 
 ## Building a New App from a PRD
 
@@ -83,6 +85,7 @@ After the app is built, if the user asks "what now?", "how do I grow?", or simil
 - Programmatic SEO → `DOCS/FOUNDER/PSEO_REFERENCE.md`
 - Growth and analytics → `DOCS/FOUNDER/GROWTH_BASICS.md`
 - Referral program → `DOCS/FOUNDER/REFERRAL_SYSTEM.md`
+- SEO authority, backlinks & E-E-A-T → `DOCS/FOUNDER/SEO_AUTHORITY_BUILDING.md`
 
 ## Convex Runtime Rules
 
