@@ -89,6 +89,18 @@ When you have a PRD or MVP spec:
    - Configures sidebar navigation
 4. After building, Claude presents the env var checklist for what you need to configure
 
+## Customizing Your Brand
+
+The starter kit ships with a default design (blue / Space Grotesk / clean tone). Three Claude Code skills let you customize the visual identity:
+
+| Skill | What it does | When to use |
+|-------|-------------|-------------|
+| `/preview-brands` | Generates 3 brand direction previews as standalone HTML files — different colors, fonts, and layout compositions. Open in browser tabs to compare. | Starting a new project, exploring options |
+| `/brand #hex "Font" tone` | Applies chosen tokens to `globals.css`, font imports, and design system doc. Tones: `clean`, `bold`, `warm`, `playful`, `editorial`. | After picking a direction from previews |
+| `/redesign` | Freeform visual changes while preserving structure and conversion patterns. | Tweaking an existing design |
+
+**Typical flow:** `/preview-brands` (compare 3 options) → `/brand` (apply the winner) → build your app.
+
 ## Tech Stack
 
 | Layer | Technology |

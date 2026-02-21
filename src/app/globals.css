@@ -3,27 +3,20 @@
 :root {
   /* Base colors */
   --background: #ffffff;
-  --foreground: #171717;
-  --muted: #fafafa;
-  /* --muted: #f4f4f5; */
+  --foreground: #030711;
+  --muted: #f4f4f6;
   --muted-foreground: #71717a;
-  --border: #e4e4e7;
+  --border: #e9eaed;
 
   /* Primary brand color - use with opacity modifiers (primary/10, primary/80, etc.) */
-  /* --primary: #2563eb; */
-  --primary: #1a1009;
-
+  --primary: #1e40af;
   --primary-foreground: #fafafa;
 
   /* Status colors - use with opacity modifiers for backgrounds */
-  --success: #008000;
-  /* --success: #478778; */
-  /* --success: #2E8B57; */
-  
+  --success: #16a34a;
   --warning: #f59e0b;
-  --danger: #C04000;
+  --danger: #dc2626;
   --info: #3b82f6;
-
 
   /* Card/surface */
   --card: #ffffff;
@@ -42,13 +35,13 @@
   --accent-foreground: var(--foreground);
 
   /* Sidebar */
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
+  --sidebar: #eef1fc;
+  --sidebar-foreground: #060e23;
+  --sidebar-primary: #122968;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #dce4f9;
+  --sidebar-accent-foreground: #060e23;
+  --sidebar-border: #d0d3dc;
   --sidebar-ring: var(--primary);
 }
 
@@ -85,9 +78,8 @@
   --color-accent-foreground: var(--accent-foreground);
 
   /* Fonts */
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-brand);
   --font-mono: var(--font-geist-mono);
-  --font-jost: var(--font-jost);
 
   /* Sidebar */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -122,7 +114,7 @@
 
 body {
   color: var(--foreground);
-  font-family: var(--font-jost);
+  font-family: var(--font-brand);
 }
 
 @keyframes scroll-seamless {

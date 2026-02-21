@@ -27,18 +27,18 @@ All colors come from CSS variables. **Never use hardcoded Tailwind color classes
 
 | Variable | Value | Usage | Example Classes |
 |----------|-------|-------|-----------------|
-| `--primary` | `#1a1009` | Brand/accent color | `bg-primary`, `text-primary`, `border-primary` |
+| `--primary` | `#1e40af` | Brand/accent color | `bg-primary`, `text-primary`, `border-primary` |
 | `--primary-foreground` | `#fafafa` | Text on primary backgrounds | `text-primary-foreground` |
-| `--foreground` | `#171717` | Main text color | `text-foreground` |
+| `--foreground` | `#030711` | Main text color | `text-foreground` |
 | `--background` | `#ffffff` | Page background | `bg-background` |
-| `--muted` | `#fafafa` | Subtle backgrounds | `bg-muted` |
+| `--muted` | `#f4f4f6` | Subtle backgrounds | `bg-muted` |
 | `--muted-foreground` | `#71717a` | Secondary text | `text-muted-foreground` |
-| `--border` | `#e4e4e7` | Borders | `border-border` |
+| `--border` | `#e9eaed` | Borders | `border-border` |
 | `--card` | `#ffffff` | Card backgrounds | `bg-card` |
 | `--accent` | `var(--muted)` | Hover states | `bg-accent` |
-| `--success` | `#008000` | Success states | `text-success`, `bg-success/10` |
+| `--success` | `#16a34a` | Success states | `text-success`, `bg-success/10` |
 | `--warning` | `#f59e0b` | Warning states | `text-warning`, `bg-warning/20` |
-| `--danger` | `#C04000` | Error/destructive | `text-danger`, `bg-danger/10` |
+| `--danger` | `#dc2626` | Error/destructive | `text-danger`, `bg-danger/10` |
 | `--info` | `#3b82f6` | Informational | `text-info`, `bg-info/10` |
 
 ### Opacity Modifiers
@@ -71,7 +71,7 @@ className="text-gray-700"       // Use text-foreground/80
 ## Typography
 
 ### Font Family
-- **Primary**: Jost (headings and body)
+- **Primary**: Space Grotesk (headings and body)
 - **Fallback**: Geist Sans, Geist Mono (for code)
 
 ### Heading Hierarchy

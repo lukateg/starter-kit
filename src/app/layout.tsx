@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Jost } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { PHProvider } from "./providers/PostHogProvider";
 import { MetaPixelProvider } from "./providers/MetaPixelProvider";
@@ -81,8 +81,8 @@ export const metadata: Metadata = {
   },
 };
 
-const jost = Jost({
-  variable: "--font-jost",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-brand",
   subsets: ["latin"],
 });
 
@@ -143,7 +143,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jost.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <ClerkProvider>
           <ConvexClientProvider>

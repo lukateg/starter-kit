@@ -168,6 +168,8 @@ Do NOT use manual `if (query.isPending)` / `if (query.isError)` checks. See `DOC
 
 ## Available Skills
 
+- `/preview-brands` — Generate 3 brand direction previews as standalone HTML files for visual comparison. See `.claude/skills/preview-brands.md`.
+- `/brand` — Generate a complete visual identity from a primary color, font, and brand tone. Updates CSS variables, font imports, and design system doc. See `.claude/skills/brand.md`.
 - `/redesign` — Redesign the app's visual identity while preserving structure and conversion patterns. See `.claude/skills/redesign.md`.
 
 ## Prohibited Actions
