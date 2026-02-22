@@ -22,15 +22,15 @@ export default function NotFound() {
   const buttonText = isLoaded && isSignedIn ? "Go to Dashboard" : "Go to Home";
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-muted p-8">
       <div className="flex max-w-md flex-col items-center text-center">
-        <div className="mb-6 rounded-full bg-gray-100 p-4">
-          <FileQuestion className="h-12 w-12 text-gray-400" />
+        <div className="mb-6 rounded-full bg-muted p-4">
+          <FileQuestion className="h-12 w-12 text-muted-foreground" />
         </div>
-        <h1 className="mb-2 text-2xl font-semibold text-gray-900">
+        <h1 className="mb-2 text-2xl font-semibold text-foreground">
           Page Not Found
         </h1>
-        <p className="mb-6 text-gray-600">
+        <p className="mb-6 text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <Button asChild>

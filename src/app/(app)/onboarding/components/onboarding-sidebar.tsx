@@ -59,7 +59,7 @@ export function OnboardingSidebar() {
                           isCompleted
                             ? "bg-success/20 text-success"
                             : isCurrent
-                              ? "bg-success text-white"
+                              ? "bg-success text-background"
                               : "bg-muted text-muted-foreground"
                         )}
                       >

@@ -83,7 +83,7 @@ export function TrafficGrowthCard() {
                 <span className="text-muted-foreground text-sm">
                   Last 30 days
                 </span>
-                <span className="text-green-700 font-semibold flex items-center gap-1">
+                <span className="text-success font-semibold flex items-center gap-1">
                   <TrendingUp className="w-4 h-4" />
                   385%
                 </span>

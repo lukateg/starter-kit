@@ -13,25 +13,25 @@ export default function Footer() {
   const articles = articlesQuery.data;
   const latestArticles = articles?.slice(0, 4) ?? [];
   return (
-    <footer className="w-full bg-gray-50 border-t border-gray-200 py-16">
+    <footer className="w-full bg-muted border-t border-border py-16">
       <div className="container mx-auto px-4 max-w-[1400px]">
         {/* Main footer grid */}
         <div className="grid grid-cols-1 md:grid-cols-7 gap-12 mb-16">
           {/* Logo */}
           <div className="mb-12">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">Your App</span>
+              <span className="text-xl font-bold text-foreground">Your App</span>
             </div>
           </div>
 
           {/* Product */}
           <div>
-            <h3 className="font-bold text-gray-900 text-lg mb-6">Product</h3>
+            <h3 className="font-bold text-foreground text-lg mb-6">Product</h3>
             <ul className="space-y-4">
               <li>
                 <Link
                   href="/#about"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Features
                 </Link>
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#pricing"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Pricing
                 </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#faq"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   FAQ
                 </Link>
@@ -57,12 +57,12 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-bold text-gray-900 text-lg mb-6">Company</h3>
+            <h3 className="font-bold text-foreground text-lg mb-6">Company</h3>
             <ul className="space-y-4">
               <li>
                 <Link
                   href="/blog"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Blog
                 </Link>
@@ -70,7 +70,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Privacy
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Terms
                 </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {/* Find Us On — Replace # links with real profile URLs (see DOCS/FOUNDER/DIGITAL_PRESENCE.md) */}
           <div>
-            <h3 className="font-bold text-gray-900 text-lg mb-6">
+            <h3 className="font-bold text-foreground text-lg mb-6">
               Find Us On
             </h3>
             <ul className="space-y-4">
@@ -97,7 +97,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   G2
                 </a>
@@ -107,7 +107,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Capterra
                 </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   GetApp
                 </a>
@@ -127,7 +127,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Trustpilot
                 </a>
@@ -137,7 +137,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Crunchbase
                 </a>
@@ -147,7 +147,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   AlternativeTo
                 </a>
@@ -157,7 +157,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   SaaSHub
                 </a>
@@ -167,7 +167,7 @@ export default function Footer() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   StackShare
                 </a>
@@ -177,7 +177,7 @@ export default function Footer() {
 
           {/* Latest Blog Posts */}
           <div>
-            <h3 className="font-bold text-gray-900 text-lg mb-6">
+            <h3 className="font-bold text-foreground text-lg mb-6">
               Latest Blog Posts
             </h3>
             <ul className="space-y-4">
@@ -186,27 +186,27 @@ export default function Footer() {
                   <li key={article._id}>
                     <Link
                       href={`/blog/${article.slug}`}
-                      className="text-gray-600 hover:text-gray-900 transition-colors"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {article.title}
                     </Link>
                   </li>
                 ))
               ) : (
-                <li className="text-gray-500 text-sm">No posts yet</li>
+                <li className="text-muted-foreground text-sm">No posts yet</li>
               )}
             </ul>
           </div>
 
           {/* CTA Section */}
           <div>
-            <h3 className="font-bold text-gray-900 text-lg mb-6">
+            <h3 className="font-bold text-foreground text-lg mb-6">
               Ready to get started?
             </h3>
             <div className="space-y-3">
               <TrackedCTALink
                 href="/sign-up"
-                className="inline-block bg-primary text-white px-6 py-3 font-semibold transition-colors"
+                className="inline-block bg-primary text-primary-foreground px-6 py-3 font-semibold transition-colors"
                 eventData={{ button_location: "footer" }}
               >
                 Get Started
@@ -216,8 +216,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-sm flex items-center gap-1">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm flex items-center gap-1">
             &copy; {new Date().getFullYear()} Your App. All rights reserved.
           </p>
 
@@ -227,7 +227,7 @@ export default function Footer() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="X (Twitter)"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -238,7 +238,7 @@ export default function Footer() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -247,7 +247,7 @@ export default function Footer() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />
@@ -256,7 +256,7 @@ export default function Footer() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />

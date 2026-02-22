@@ -132,8 +132,8 @@ function AcceptInviteContent() {
   // Not loaded yet
   if (!authLoaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+      <div className="min-h-screen flex items-center justify-center bg-muted">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     );
   }
@@ -141,11 +141,11 @@ function AcceptInviteContent() {
   // No token provided
   if (!token) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <XCircle className="h-6 w-6 text-red-500" />
+              <XCircle className="h-6 w-6 text-danger" />
               <CardTitle>Invalid Invitation</CardTitle>
             </div>
           </CardHeader>
@@ -168,7 +168,7 @@ function AcceptInviteContent() {
   // Loading state
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-muted">
         <Card className="w-full max-w-md mx-4">
           <CardContent className="pt-6">
             <div className="flex flex-col items-center gap-4">
@@ -184,7 +184,7 @@ function AcceptInviteContent() {
   // Not signed in - show sign in prompt
   if (!isSignedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
@@ -232,11 +232,11 @@ function AcceptInviteContent() {
   // Error states
   if (status === "not-found") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <XCircle className="h-6 w-6 text-red-500" />
+              <XCircle className="h-6 w-6 text-danger" />
               <CardTitle>Invitation Not Found</CardTitle>
             </div>
           </CardHeader>
@@ -258,11 +258,11 @@ function AcceptInviteContent() {
 
   if (status === "expired") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-yellow-500" />
+              <AlertTriangle className="h-6 w-6 text-warning" />
               <CardTitle>Invitation Expired</CardTitle>
             </div>
           </CardHeader>
@@ -284,11 +284,11 @@ function AcceptInviteContent() {
 
   if (status === "revoked") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <XCircle className="h-6 w-6 text-red-500" />
+              <XCircle className="h-6 w-6 text-danger" />
               <CardTitle>Invitation Revoked</CardTitle>
             </div>
           </CardHeader>
@@ -310,11 +310,11 @@ function AcceptInviteContent() {
 
   if (status === "already-member") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-6 w-6 text-green-500" />
+              <CheckCircle2 className="h-6 w-6 text-success" />
               <CardTitle>Already a Member</CardTitle>
             </div>
           </CardHeader>
@@ -336,11 +336,11 @@ function AcceptInviteContent() {
 
   if (status === "project-full") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-yellow-500" />
+              <AlertTriangle className="h-6 w-6 text-warning" />
               <CardTitle>Project Full</CardTitle>
             </div>
           </CardHeader>
@@ -362,11 +362,11 @@ function AcceptInviteContent() {
 
   if (status === "email-mismatch") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-yellow-500" />
+              <AlertTriangle className="h-6 w-6 text-warning" />
               <CardTitle>Email Mismatch</CardTitle>
             </div>
           </CardHeader>
@@ -398,11 +398,11 @@ function AcceptInviteContent() {
 
   if (status === "error") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <XCircle className="h-6 w-6 text-red-500" />
+              <XCircle className="h-6 w-6 text-danger" />
               <CardTitle>Something Went Wrong</CardTitle>
             </div>
           </CardHeader>
@@ -425,7 +425,7 @@ function AcceptInviteContent() {
   // Accepting state
   if (status === "accepting") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-muted">
         <Card className="w-full max-w-md mx-4">
           <CardContent className="pt-6">
             <div className="flex flex-col items-center gap-4">
@@ -441,11 +441,11 @@ function AcceptInviteContent() {
   // Accepted state
   if (status === "accepted") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-6 w-6 text-green-500" />
+              <CheckCircle2 className="h-6 w-6 text-success" />
               <CardTitle>You&apos;re In!</CardTitle>
             </div>
           </CardHeader>
@@ -468,7 +468,7 @@ function AcceptInviteContent() {
 
   // Valid invitation - show accept UI
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
           <div className="flex items-center gap-2">
@@ -531,8 +531,8 @@ export default function AcceptInvitePage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        <div className="min-h-screen flex items-center justify-center bg-muted">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
       }
     >

@@ -52,7 +52,7 @@ export function NotificationBell() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-80 bg-white max-h-96 overflow-y-auto"
+        className="w-80 bg-background max-h-96 overflow-y-auto"
       >
         <div className="flex items-center justify-between px-2 py-1.5">
           <DropdownMenuLabel className="p-0">Notifications</DropdownMenuLabel>

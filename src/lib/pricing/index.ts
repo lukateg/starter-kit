@@ -89,7 +89,7 @@ export const CREDIT_PACKAGES: CreditPackageConfig[] = [
     description: "Perfect for getting started with your project",
     perCreditCost: 0.109,
     variantEnvKey: "NEXT_PUBLIC_LEMONSQUEEZY_STANDARD_VARIANT_ID",
-    bgColor: "bg-[#E6F7F5]",
+    bgColor: "bg-success/10",
   },
   {
     id: "premium",
@@ -102,7 +102,7 @@ export const CREDIT_PACKAGES: CreditPackageConfig[] = [
     savings: "$38 discount",
     monthsOfContent: "Best value for growing teams",
     variantEnvKey: "NEXT_PUBLIC_LEMONSQUEEZY_PREMIUM_VARIANT_ID",
-    bgColor: "bg-[#FFFBEB]",
+    bgColor: "bg-warning/10",
   },
 ];
 

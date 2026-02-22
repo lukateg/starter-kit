@@ -78,7 +78,7 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
   return (
     <>
       {/* Category Tabs */}
-      <div className="border-b border-gray-200 mb-8">
+      <div className="border-b border-border mb-8">
         <div className="flex gap-8 overflow-x-auto scrollbar-hide">
           {categories.map((category) => {
             const isActive = selectedCategory === category;
@@ -88,12 +88,12 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
                 onClick={() => handleCategoryChange(category)}
                 className={`
                   pb-4 px-1 text-sm font-medium whitespace-nowrap transition-colors relative
-                  text-black
+                  text-foreground
                 `}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
                 {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground" />
                 )}
               </button>
             );
@@ -106,7 +106,7 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
         {displayedPosts.map((post) => (
           <article
             key={post.id}
-            className="group bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="group bg-background border border-border rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <Link href={`/blog/${post.id}`}>
               <div className="relative aspect-[16/9] overflow-hidden rounded-sm">
@@ -121,7 +121,7 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
 
             <div className="p-6">
               {/* Reading time */}
-              <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
+              <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -140,21 +140,21 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
 
               {/* Title */}
               <Link href={`/blog/${post.id}`}>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </h3>
               </Link>
 
               {/* Excerpt */}
               <Link href={`/blog/${post.id}`}>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-muted-foreground mb-4 line-clamp-3">
                   {post.excerpt}
                 </p>
               </Link>
 
               {/* Meta */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <div className="text-sm text-gray-500">{post.date}</div>
+              <div className="flex items-center justify-between pt-4 border-t border-border">
+                <div className="text-sm text-muted-foreground">{post.date}</div>
               </div>
 
               {/* Author */}
@@ -168,10 +168,10 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
                   />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm">
+                  <div className="font-semibold text-foreground text-sm">
                     {post.author.name}
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-muted-foreground">
                     {post.author.title}
                   </div>
                 </div>
@@ -189,7 +189,7 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
               return (
                 <span
                   key={`ellipsis-${index}`}
-                  className="px-3 py-2 text-gray-400"
+                  className="px-3 py-2 text-muted-foreground"
                 >
                   ...
                 </span>
@@ -205,8 +205,8 @@ export function BlogGridWithFilters({ allPosts }: BlogGridWithFiltersProps) {
                   px-4 py-2 font-medium transition-colors
                   ${
                     isActive
-                      ? "text-black"
-                      : "text-gray-500 hover:text-gray-900"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }
                 `}
               >

@@ -264,7 +264,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
           className="flex items-center gap-2.5"
         >
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-            <span className="text-white font-bold text-sm">S</span>
+            <span className="text-primary-foreground font-bold text-sm">S</span>
           </div>
           {(!collapsed || isMobile) && (
             <span className="font-bold text-foreground text-lg">Starter</span>
@@ -285,7 +285,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
                 <ChevronDown className="h-4 w-4 opacity-50 shrink-0 ml-2" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-[220px] bg-white">
+            <DropdownMenuContent align="start" className="w-[220px] bg-background">
               <DropdownMenuLabel className="text-xs text-muted-foreground font-normal">
                 Switch project
               </DropdownMenuLabel>
@@ -368,7 +368,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
           <DropdownMenuContent
             align={collapsed && !isMobile ? "center" : "start"}
             side="top"
-            className="w-56 bg-white mb-2"
+            className="w-56 bg-background mb-2"
           >
             <DropdownMenuLabel>
               <div className="flex flex-col space-y-1">
@@ -440,7 +440,7 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          "border-r bg-white transition-all duration-300 hidden md:flex flex-col",
+          "border-r bg-background transition-all duration-300 hidden md:flex flex-col",
           collapsed ? "w-[72px]" : "w-72"
         )}
       >
@@ -455,14 +455,14 @@ export function AppSidebar({ mobileOpen = false, onMobileClose }: AppSidebarProp
  */
 export function MobileHeader({ onMenuClick }: { onMenuClick: () => void }) {
   return (
-    <header className="border-b bg-white md:hidden">
+    <header className="border-b bg-background md:hidden">
       <div className="flex h-14 items-center px-4">
         <Button variant="ghost" size="icon" onClick={onMenuClick}>
           <Menu className="h-5 w-5" />
         </Button>
         <Link href="/" className="flex items-center gap-2 ml-2">
           <div className="h-7 w-7 rounded-lg bg-primary flex items-center justify-center shrink-0">
-            <span className="text-white font-bold text-xs">S</span>
+            <span className="text-primary-foreground font-bold text-xs">S</span>
           </div>
           <span className="font-bold text-foreground">Starter</span>
         </Link>

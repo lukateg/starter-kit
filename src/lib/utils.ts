@@ -36,13 +36,13 @@ export function getIntentBadgeStyles(intent: string): string {
     case "how-to":
       return "bg-primary/20 text-primary hover:bg-primary/30";
     case "listicle":
-      return "bg-[#AA336A]/30 text-purple-[#AA336A] hover:bg-purple-[#AA336A]/30";
+      return "bg-purple-500/15 text-purple-700 hover:bg-purple-500/20";
     case "guide":
-      return "bg-[#CC5500]/15 text-[#CC5500] hover:bg-[#CC5500]/15";
+      return "bg-warning/15 text-warning hover:bg-warning/20";
     case "comparison":
       return "bg-success/20 text-success hover:bg-success/30";
     case "review":
-      return "bg-pink-100 text-pink-700 hover:bg-pink-200";
+      return "bg-info/15 text-info hover:bg-info/20";
     case "deep-dive":
       return "bg-danger/20 text-danger hover:bg-danger/20";
     default:

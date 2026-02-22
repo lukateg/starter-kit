@@ -9,7 +9,7 @@ export function OnboardingMobileHeader() {
   return (
     <div
       className={cn(
-        "lg:hidden px-4 pt-4 pb-3 sticky top-0 z-10 bg-white flex flex-col items-center gap-3",
+        "lg:hidden px-4 pt-4 pb-3 sticky top-0 z-10 bg-background flex flex-col items-center gap-3",
         step === 0 && "hidden"
       )}
     >

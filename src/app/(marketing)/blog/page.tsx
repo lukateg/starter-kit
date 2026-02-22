@@ -111,7 +111,7 @@ export default async function BlogPage() {
   const featuredArticle = allPosts[0];
 
   return (
-    <main className="min-h-screen bg-white max-w-7xl mx-auto">
+    <main className="min-h-screen bg-background max-w-7xl mx-auto">
       {/* Featured Article Section */}
       {featuredArticle && (
         <div className="">
@@ -133,8 +133,8 @@ export default async function BlogPage() {
                 {/* Right: Content */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   {/* Breadcrumb */}
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
-                    <Link href="/blog" className="hover:text-gray-900">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                    <Link href="/blog" className="hover:text-foreground">
                       Blog
                     </Link>
                     <span>›</span>
@@ -143,18 +143,18 @@ export default async function BlogPage() {
 
                   {/* Title */}
                   <Link href={`/blog/${featuredArticle.id}`}>
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
                       {featuredArticle.title}
                     </h1>
                   </Link>
 
                   {/* Excerpt */}
-                  <p className="text-lg text-gray-600 mb-6 line-clamp-3">
+                  <p className="text-lg text-muted-foreground mb-6 line-clamp-3">
                     {featuredArticle.excerpt}
                   </p>
 
                   {/* Meta Information */}
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                     <div className="flex items-center gap-2">
                       <svg
                         className="w-4 h-4"
@@ -172,7 +172,7 @@ export default async function BlogPage() {
                       <span>{featuredArticle.readTime}</span>
                     </div>
                     <span>{featuredArticle.date}</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+                    <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">
                       {featuredArticle.category}
                     </span>
                   </div>
@@ -188,10 +188,10 @@ export default async function BlogPage() {
                       />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-foreground">
                         {featuredArticle.author.name}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-muted-foreground">
                         {featuredArticle.author.title}
                       </div>
                     </div>

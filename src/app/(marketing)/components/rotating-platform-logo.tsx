@@ -44,7 +44,7 @@ export function RotatingPlatformLogo() {
         width={120}
         height={64}
       />
-      <span className="text-3xl md:text-6xl font-bold text-gray-900 whitespace-nowrap">
+      <span className="text-3xl md:text-6xl font-bold text-foreground whitespace-nowrap">
         {logo.name}
       </span>
     </div>

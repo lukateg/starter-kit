@@ -31,7 +31,7 @@ function OnboardingContent() {
       <OnboardingMobileHeader />
 
       {/* Right Content Area (2/3 on desktop, full width on mobile and intro) */}
-      <div className={cn("w-full p-4 sm:p-6 lg:p-8 flex items-start lg:items-center justify-center overflow-y-auto lg:min-h-screen bg-white relative", step !== 0 && "lg:w-2/3")}>
+      <div className={cn("w-full p-4 sm:p-6 lg:p-8 flex items-start lg:items-center justify-center overflow-y-auto lg:min-h-screen bg-background relative", step !== 0 && "lg:w-2/3")}>
         {hasProjects && projects && (
           <Button
             variant="outline"
@@ -85,7 +85,7 @@ function OnboardingContent() {
               )}
               {step >= 1 && step < TOTAL_STEPS && (
                 <Button
-                  className="w-full sm:w-auto bg-foreground text-white hover:bg-foreground/90"
+                  className="w-full sm:w-auto"
                   onClick={handleNext}
                   disabled={isSubmitting}
                 >

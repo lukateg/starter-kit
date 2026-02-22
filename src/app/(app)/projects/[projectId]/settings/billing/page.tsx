@@ -189,11 +189,11 @@ function BillingContent() {
           {creditPackages.map((pkg) => (
             <div
               key={pkg.credits}
-              className={`relative ${pkg.bgColor} rounded-2xl p-8 flex flex-col ${pkg.popular ? "border-2 border-black" : ""}`}
+              className={`relative ${pkg.bgColor} rounded-2xl p-8 flex flex-col ${pkg.popular ? "border-2 border-foreground" : ""}`}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-black text-white px-4 py-1 text-sm font-semibold hover:bg-black">
+                  <Badge className="bg-foreground text-background px-4 py-1 text-sm font-semibold hover:bg-foreground">
                     Most Popular
                   </Badge>
                 </div>

@@ -54,7 +54,7 @@ export function StepComplete() {
       </Card>
 
       <Button
-        className="w-full bg-foreground text-white hover:bg-foreground/90"
+        className="w-full"
         onClick={handleNext}
         disabled={isSubmitting}
       >

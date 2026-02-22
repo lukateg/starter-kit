@@ -71,8 +71,8 @@ function CreditDisplayContent({ credits }: { credits: { credits: number } }) {
             </span>
           </button>
         </TooltipTrigger>
-        <TooltipContent className="bg-background text-black">
-          <div className="text-sm bg-background text-black">
+        <TooltipContent className="bg-background text-foreground">
+          <div className="text-sm bg-background text-foreground">
             <p className="font-medium">{credits.credits} credits available</p>
             <p className="text-xs text-muted-foreground/60 mt-2">Click to purchase more</p>
           </div>

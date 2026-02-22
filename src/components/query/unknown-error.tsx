@@ -17,13 +17,13 @@ export function UnknownError({ message }: UnknownErrorProps) {
   return (
     <div className="flex min-h-[60vh] items-center justify-center p-8">
       <div className="max-w-md space-y-4 text-center">
-        <div className="mx-auto w-fit rounded-full bg-red-50 p-4">
-          <AlertCircle className="h-12 w-12 text-red-500" />
+        <div className="mx-auto w-fit rounded-full bg-danger/10 p-4">
+          <AlertCircle className="h-12 w-12 text-danger" />
         </div>
-        <h2 className="text-2xl font-semibold text-gray-900">
+        <h2 className="text-2xl font-semibold text-foreground">
           Something Went Wrong
         </h2>
-        <p className="text-gray-600">
+        <p className="text-muted-foreground">
           {message ??
             "We encountered an unexpected error. Please try again. If the problem persists, contact support."}
         </p>

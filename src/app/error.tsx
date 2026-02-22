@@ -24,15 +24,15 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-muted p-8">
       <div className="flex max-w-md flex-col items-center text-center">
-        <div className="mb-6 rounded-full bg-red-50 p-4">
-          <AlertTriangle className="h-12 w-12 text-red-500" />
+        <div className="mb-6 rounded-full bg-danger/10 p-4">
+          <AlertTriangle className="h-12 w-12 text-danger" />
         </div>
-        <h1 className="mb-2 text-2xl font-semibold text-gray-900">
+        <h1 className="mb-2 text-2xl font-semibold text-foreground">
           Something Went Wrong
         </h1>
-        <p className="mb-6 text-gray-600">
+        <p className="mb-6 text-muted-foreground">
           We encountered an unexpected error. Please try again. If the problem
           persists, contact support.
         </p>

@@ -83,15 +83,15 @@ const faqData = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted">
       {/* Hero Section */}
-      <section className="bg-white md:pt-12 py-8">
+      <section className="bg-background md:pt-12 py-8">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-6 flex flex-col items-center justify-center md:gap-3 gap-1 flex-wrap">
+            <h1 className="text-3xl md:text-5xl font-semibold text-foreground mb-6 flex flex-col items-center justify-center md:gap-3 gap-1 flex-wrap">
               <span>Build Your Product Faster</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
               A production-ready SaaS starter kit with auth, payments, teams,
               and more.{" "}
               <span className="italic underline bg-success/10 text-success px-2 py-1 rounded-sm">
@@ -219,10 +219,10 @@ export default function Home() {
       <section id="about" className="py-16 md:py-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl font-semibold text-foreground mb-4">
               Everything You Need to Launch
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Stop rebuilding the same infrastructure. Start with a
               production-tested foundation and focus on what makes your product
               unique.
@@ -235,7 +235,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
                 <Code className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 1. Clone & Configure
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -248,7 +248,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
                 <Palette className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 2. Customize & Build
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -261,7 +261,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 3. Ship & Scale
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -309,13 +309,13 @@ export default function Home() {
       </section>
 
       {/* Features Detail Section */}
-      <section id="benefits" className="px-4 py-20 bg-white">
+      <section id="benefits" className="px-4 py-20 bg-background">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl font-semibold text-foreground mb-4">
               Built for Production from Day One
             </h2>
-            <p className="text-lg text-gray-600 max-w-[900px] mx-auto">
+            <p className="text-lg text-muted-foreground max-w-[900px] mx-auto">
               Every feature is extracted from a live production app. No toy
               demos, no TODO comments. Real patterns that work at scale.
             </p>
@@ -334,7 +334,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 Auth & Users
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -355,7 +355,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 Payments & Credits
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -376,7 +376,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 Real-time Backend
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -397,7 +397,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 Developer Experience
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -582,10 +582,10 @@ export default function Home() {
         className="container mx-auto px-4 py-16 max-w-[1200px]"
       >
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#001438] mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6">
             Frequently Asked Questions
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-[700px]">
+          <p className="text-base md:text-lg text-muted-foreground max-w-[700px]">
             Explore our comprehensive FAQ to find quick answers to common
             inquiries. If you need further assistance, don&apos;t hesitate to
             contact us for personalized help.

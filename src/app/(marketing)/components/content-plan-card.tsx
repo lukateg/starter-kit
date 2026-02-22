@@ -36,7 +36,7 @@ export function ContentPlanCard() {
                 <span>
                   KD: <span className="font-semibold text-foreground">1</span>
                 </span>
-                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <span className="w-2 h-2 rounded-full bg-success"></span>
               </div>
               <div className="border border-border rounded-lg px-2 py-1 text-center">
                 <span className="text-[12px] font-medium text-foreground">
@@ -61,7 +61,7 @@ export function ContentPlanCard() {
                 <span>
                   KD: <span className="font-semibold text-foreground">0</span>
                 </span>
-                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <span className="w-2 h-2 rounded-full bg-success"></span>
               </div>
               <div className="border border-border rounded-lg px-2 py-1 text-center">
                 <span className="text-[12px] font-medium text-foreground">

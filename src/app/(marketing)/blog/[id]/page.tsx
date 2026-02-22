@@ -346,13 +346,13 @@ export default async function BlogPost({
           }}
         />
       )}
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-background">
         <div className="border-b p-4">
         <header className="container mx-auto px-4 py-6 max-w-[1400px]">
-          <div className="flex items-center gap-2 text-gray-600 mb-6">
+          <div className="flex items-center gap-2 text-muted-foreground mb-6">
             <Link
               href="/blog"
-              className="hover:text-gray-900 transition-colors"
+              className="hover:text-foreground transition-colors"
             >
               Blog
             </Link>
@@ -371,21 +371,21 @@ export default async function BlogPost({
                 strokeLinejoin="round"
               />
             </svg>
-            <div className="text-gray-900">{post.title}</div>
+            <div className="text-foreground">{post.title}</div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-8">
               <div>
                 {/* Title */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
                   {post.title}
                 </h1>
-                <p className="text-gray-600">{post.excerpt}</p>
+                <p className="text-muted-foreground">{post.excerpt}</p>
               </div>
 
               {/* Meta */}
-              <div className="flex items-center gap-4 text-gray-600 mb-6">
+              <div className="flex items-center gap-4 text-muted-foreground mb-6">
                 <span>{post.date}</span>
                 <span className="flex items-center gap-2">
                   <svg
@@ -403,7 +403,7 @@ export default async function BlogPost({
                   </svg>
                   {post.readTime}
                 </span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">
                   {post.category}
                 </span>
               </div>
@@ -421,10 +421,10 @@ export default async function BlogPost({
                   />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-foreground">
                     {post.author.name}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted-foreground">
                     {post.author.title}
                   </div>
                 </div>
@@ -461,16 +461,16 @@ export default async function BlogPost({
           {/* Sidebar */}
           <aside className="hidden lg:block px-8">
             <div className="sticky top-24">
-              <div className="relative border border-gray-200 text-foreground rounded-xl p-6 text-center">
+              <div className="relative border border-border text-foreground rounded-xl p-6 text-center">
                 <p className="text-2xl font-semibold mb-3">
                   Get started today
                 </p>
-                <p className="text-gray-600 mb-6">
+                <p className="text-muted-foreground mb-6">
                   Sign up for free and see what we can do for you.
                 </p>
                 <Link
                   href="/sign-up"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-foreground text-primary-foreground font-semibold rounded-lg hover:bg-foreground/90 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
                 >
                   Sign up free
                   <svg
@@ -496,9 +496,9 @@ export default async function BlogPost({
       </div>
 
       {/* Related Articles */}
-      <div className="bg-gray-50 py-16 mt-16">
+      <div className="bg-muted py-16 mt-16">
         <div className="container mx-auto px-4 max-w-[1400px]">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-8">
             Related Articles
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -509,7 +509,7 @@ export default async function BlogPost({
                 return (
                   <article
                     key={relatedPost.id}
-                    className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                    className="bg-background border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
                   >
                     <Link href={`/blog/${relatedPost.id}`}>
                       <div
@@ -527,14 +527,14 @@ export default async function BlogPost({
                     </Link>
                     <div className="p-6">
                       <Link href={`/blog/${relatedPost.id}`}>
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+                        <h4 className="text-xl font-bold text-foreground mb-2 hover:text-primary transition-colors">
                           {relatedPost.title}
                         </h4>
                       </Link>
-                      <div className="flex items-center gap-4 text-sm text-gray-600 mt-4">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mt-4">
                         <span>{relatedPost.date}</span>
                         <span>{relatedPost.readTime}</span>
-                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
                           {relatedPost.category}
                         </span>
                       </div>

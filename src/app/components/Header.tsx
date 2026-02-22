@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "w-full sticky top-0 z-50 border-b border-gray-200 transition-all duration-300 bg-white/70 backdrop-blur-md shadow-sm"
+        "w-full sticky top-0 z-50 border-b border-border transition-all duration-300 bg-background/70 backdrop-blur-md shadow-sm"
       )}
     >
       <div className="container mx-auto px-4 py-4 max-w-[1400px]">
@@ -37,7 +37,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/">
               <div className="flex items-center">
-                <span className="text-xl font-bold text-gray-900">
+                <span className="text-xl font-bold text-foreground">
                   Your App
                 </span>
               </div>
@@ -65,7 +65,7 @@ export default function Header() {
           {/* CTA Button */}
           <TrackedCTALink
             href="/sign-in"
-            className="bg-[#1a1a1a]/95 text-white px-6 py-2.5 rounded-sm font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2"
+            className="bg-primary text-primary-foreground px-6 py-2.5 rounded-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2"
             eventData={{ button_location: "header" }}
           >
             Sign in

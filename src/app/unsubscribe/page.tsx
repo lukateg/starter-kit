@@ -107,7 +107,7 @@ function UnsubscribePageContent() {
   // Loading state
   if (!token || !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted px-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Email Preferences</CardTitle>
@@ -119,7 +119,7 @@ function UnsubscribePageContent() {
           </CardHeader>
           {!token && (
             <CardContent>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 The unsubscribe link you used is invalid or expired. Please use
                 the link from your email or contact support.
               </p>
@@ -138,11 +138,11 @@ function UnsubscribePageContent() {
   // Success state
   if (status === "success") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted px-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-success">✓</span>
               Unsubscribed Successfully
             </CardTitle>
             <CardDescription>
@@ -150,15 +150,15 @@ function UnsubscribePageContent() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-sm text-green-800">
+            <div className="p-4 bg-success/10 border border-success/30 rounded-lg">
+              <p className="text-sm text-success">
                 <strong>{user.name}</strong>, you won&apos;t receive these
                 emails anymore.
               </p>
             </div>
 
             <div className="space-y-2">
-              <p className="text-sm text-gray-600">Changed your mind?</p>
+              <p className="text-sm text-muted-foreground">Changed your mind?</p>
               <Button
                 onClick={handleResubscribe}
                 variant="outline"
@@ -180,7 +180,7 @@ function UnsubscribePageContent() {
             <div className="text-center">
               <Link
                 href="/"
-                className="text-sm text-gray-500 hover:text-gray-700 underline"
+                className="text-sm text-muted-foreground hover:text-foreground underline"
               >
                 Go to Homepage
               </Link>
@@ -194,10 +194,10 @@ function UnsubscribePageContent() {
   // Error state
   if (status === "error") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted px-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-600">
+            <CardTitle className="flex items-center gap-2 text-danger">
               <span>✗</span>
               Something Went Wrong
             </CardTitle>
@@ -206,8 +206,8 @@ function UnsubscribePageContent() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-800">
+            <div className="p-4 bg-danger/10 border border-danger/30 rounded-lg">
+              <p className="text-sm text-danger">
                 If the problem persists, please contact support.
               </p>
             </div>
@@ -223,7 +223,7 @@ function UnsubscribePageContent() {
             <div className="text-center">
               <Link
                 href="/"
-                className="text-sm text-gray-500 hover:text-gray-700 underline"
+                className="text-sm text-muted-foreground hover:text-foreground underline"
               >
                 Go to Homepage
               </Link>
@@ -236,7 +236,7 @@ function UnsubscribePageContent() {
 
   // Confirmation state
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Unsubscribe from Emails</CardTitle>
@@ -245,15 +245,15 @@ function UnsubscribePageContent() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-            <p className="text-sm text-gray-800 font-medium mb-2">
+          <div className="p-4 bg-warning/10 border border-warning/30 rounded-lg">
+            <p className="text-sm text-foreground font-medium mb-2">
               You&apos;re about to unsubscribe from:
             </p>
-            <p className="text-sm text-gray-700">{getCategoryLabel()}</p>
+            <p className="text-sm text-foreground">{getCategoryLabel()}</p>
           </div>
 
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-gray-700">
+          <div className="p-4 bg-primary/10 border border-primary/30 rounded-lg">
+            <p className="text-sm text-foreground">
               <strong>Note:</strong> You&apos;ll still receive important account
               emails like payment receipts and security alerts.
             </p>
@@ -279,7 +279,7 @@ function UnsubscribePageContent() {
           <div className="text-center">
             <Link
               href="/"
-              className="text-sm text-gray-500 hover:text-gray-700 underline"
+              className="text-sm text-muted-foreground hover:text-foreground underline"
             >
               Never mind, go back
             </Link>
@@ -294,13 +294,13 @@ export default function UnsubscribePage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-muted px-4">
           <Card className="w-full max-w-md">
             <CardHeader>
               <CardTitle>Email Preferences</CardTitle>
               <CardDescription>
                 <div className="flex items-center justify-center gap-2 py-4">
-                  <Loader2 className="h-5 w-5 animate-spin text-gray-400" />
+                  <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
                   <span>Loading...</span>
                 </div>
               </CardDescription>

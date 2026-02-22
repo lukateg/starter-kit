@@ -213,7 +213,7 @@ export function BookDemoWidget() {
         <div className="fixed inset-0 z-50">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/40 animate-in fade-in duration-200"
+            className="absolute inset-0 bg-foreground/40 animate-in fade-in duration-200"
             onClick={() => setState("card")}
           />
 

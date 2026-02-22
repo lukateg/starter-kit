@@ -25,7 +25,7 @@ export function StepIntro() {
 
       <Button
         onClick={() => setStep(1)}
-        className="bg-foreground text-white hover:bg-foreground/90 px-8 py-3 text-base"
+        className="px-8 py-3 text-base"
       >
         Get Started
         <ArrowRight className="h-4 w-4 ml-2" />

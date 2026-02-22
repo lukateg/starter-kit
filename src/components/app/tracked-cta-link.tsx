@@ -11,16 +11,15 @@ const ctaLinkVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-white bg-foreground shadow hover:bg-foreground/90",
-        primary: "text-white bg-primary shadow hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         danger:
-          "bg-red-50 text-red-700 border border-red-300 shadow-sm hover:bg-red-100 hover:text-red-800",
+          "bg-danger/10 text-danger border border-danger/30 shadow-sm hover:bg-danger/20",
         outline:
           "border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

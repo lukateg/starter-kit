@@ -16,11 +16,11 @@ export function NotAuthorized({ message }: NotAuthorizedProps) {
   return (
     <div className="flex min-h-[60vh] items-center justify-center p-8">
       <div className="max-w-md space-y-4 text-center">
-        <div className="mx-auto w-fit rounded-full bg-gray-100 p-4">
-          <Lock className="h-12 w-12 text-gray-500" />
+        <div className="mx-auto w-fit rounded-full bg-muted p-4">
+          <Lock className="h-12 w-12 text-muted-foreground" />
         </div>
-        <h2 className="text-2xl font-semibold text-gray-900">Access Denied</h2>
-        <p className="text-gray-600">
+        <h2 className="text-2xl font-semibold text-foreground">Access Denied</h2>
+        <p className="text-muted-foreground">
           {message ??
             "You don't have permission to access this resource. Contact the project owner for an invitation."}
         </p>
