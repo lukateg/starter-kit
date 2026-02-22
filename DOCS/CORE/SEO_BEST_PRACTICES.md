@@ -226,13 +226,33 @@ E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) affects rank
 
 ### Page titles
 
-Format: `Target Keyword | Benefit | Brand Name`
+**Structure**: `Target Keyword | Benefit | Brand Name`
 
-For bottom-of-funnel landing pages, include a reason to click (benefit) between the keyword and brand:
-- `Project Management for Agencies | Free to Try | YourBrand`
-- `AI Writing Assistant | Saves 10 Hours/Week | YourBrand`
+The target keyword goes first — it's what makes someone click. The benefit distinguishes you from every other result on the SERP. The brand comes last (it's fine if Google truncates it).
 
-Use a vertical bar `|` as the separator. Always put your brand name at the end.
+**Always use `|` (vertical bar) as separator**, not dashes.
+
+**Don't worry about the 60-character "rule"**. Google rewrites title tags anyway — what matters is giving Google more context and giving searchers a reason to click you instead of competitors. A title that exceeds 60 characters but has a clear keyword + compelling benefit will outperform a short title that plays it safe. The truncated part still helps Google understand relevance.
+
+**Examples:**
+
+```
+Cloud-Based Sales Recording Software | Free 14-Day Trial | Acme Corp
+
+SKU Generator | Create SKUs on Demand for Free | Acme Corp
+
+How to Build AI Agents | Free Guide from Beginner to Implementation | Acme Corp
+```
+
+**What NOT to do — keyword stuffing in titles:**
+
+```
+❌ SKU Generator | Create SKUs on Demand for Free | Effortlessly Build SKUs for Your Entire Inventory | Acme Corp
+```
+
+Repeating the same concept ("SKU/SKUs") across multiple segments is keyword stuffing. Google understands the topic from one mention — use the extra space for a different benefit or related query, not keyword repetition. Stuffing includes similar-match repetition, not just exact-match.
+
+**Rule**: Keyword first → benefit that differentiates → brand last. Extra length is fine if each segment adds new information. Extra length is bad if it repeats the same keyword in different forms.
 
 ### Author profiles (for blog content)
 
@@ -316,7 +336,7 @@ When building any public page, verify:
 - [ ] Page is linked from a hub page or main navigation (not an isolated island)
 
 **E-E-A-T signals:**
-- [ ] Page title follows format: `Keyword | Benefit | Brand Name`
+- [ ] Page title follows format: `Keyword | Benefit | Brand Name` — keyword first, `|` separators, no keyword repetition across segments
 - [ ] Blog posts have linked author profile with bio and social links
 - [ ] Sources are cited with dofollow outbound links where applicable
 - [ ] Custom images used (not only stock photos), all with alt text
