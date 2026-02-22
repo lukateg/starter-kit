@@ -76,6 +76,14 @@ Before building or modifying ANY feature with a corresponding DOCS/CORE/ file, y
 
 When a user provides a PRD, MVP spec, or asks you to "build this app", read `DOCS/GUIDE/BUILD_FROM_PRD.md` FIRST. It contains the step-by-step workflow for turning a product spec into a working app using this kit's conventions.
 
+## Ralph Loop (Autonomous Build)
+
+For large builds, use the Ralph Loop — a bash script that runs Claude Code in a loop, completing one task per iteration with fresh context. See `DOCS/GUIDE/RALPH_LOOP.md` for full setup.
+
+**Quick start**: User provides PRD → you break it into atomic tasks in `.ralph/TASKS.md` → user runs `./ralph.sh` → app gets built autonomously.
+
+Files: `ralph.sh` (loop runner), `.ralph/PROMPT.md` (iteration prompt), `.ralph/TASKS.md` (task checklist — generated per app).
+
 ## Post-Build Guidance
 
 After the app is built, if the user asks "what now?", "how do I grow?", or similar:

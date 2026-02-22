@@ -2,6 +2,15 @@
 
 > **Purpose**: This is the master workflow Claude Code follows when a user provides a PRD, MVP spec, or says "build this app."
 
+## Execution Options
+
+| Approach | Best for | How |
+|----------|----------|-----|
+| **Interactive** | Small apps, learning the kit | Work through steps below with the user in one session |
+| **Ralph Loop** | Full MVPs, large PRDs | Break PRD into atomic tasks → user runs `./ralph.sh` autonomously. See `DOCS/GUIDE/RALPH_LOOP.md` |
+
+If the user asks to "one-shot" the app, wants to run it overnight, or the PRD has 10+ features, recommend the Ralph Loop approach. Break the PRD into tasks in `.ralph/TASKS.md` and let the user run the loop.
+
 ## Before You Start
 
 1. Read the full PRD/MVP spec
