@@ -238,6 +238,24 @@ async function main() {
     required: true,
   });
 
+  // JWT Template for Convex auth
+  console.log(`\n${chalk.bold.yellow("⚠  Required: Convex JWT Template")}`);
+  console.log(
+    `  Without this, authentication will not work.\n`
+  );
+  console.log(
+    `  1. Go to ${link("https://clerk.com")} → JWT Templates`
+  );
+  console.log(`  2. Click ${chalk.bold("New template")} → choose ${chalk.bold("Convex")}`);
+  console.log(`  3. Keep the default settings (no changes needed)`);
+  console.log(`  4. Click ${chalk.bold("Save")}`);
+  console.log("");
+
+  await confirm({
+    message: "I've created the Convex JWT template in Clerk",
+    default: false,
+  });
+
   if (siteUrl) {
     console.log(`\n${chalk.bold("Webhook setup:")}`);
     console.log(
