@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction C — Deep Graphite Variant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #292524;
+    --primary-foreground: #fafafa;
+    --accent: #dc2626;
+    --foreground: #292524;
+    --background: #fafafa;
+    --surface: #ffffff;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+    --border: #e5e5e5;
+    --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --info: #2563eb;
+    --radius: 0px;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-accent: 'Newsreader', Georgia, serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-display); color:var(--foreground); background:var(--background); -webkit-font-smoothing:antialiased; line-height:1.5; }
+
+  /* ---- DESIGN PHILOSOPHY ----
+     Maximum contrast. Black and white with red as the only
+     color. Zero border radius. Oversized display type mixed
+     with an italic serif for elegance. Swiss/brutalist grid.
+     Dense where it needs to be, extremely spacious where it
+     doesn't. Nothing decorative — every element earns its place.
+  ---- */
+
+  .token-bar { background:var(--primary); color:rgba(250,250,250,0.5); padding:10px 32px; display:flex; gap:20px; flex-wrap:wrap; font-size:11px; letter-spacing:.5px; }
+  .token-bar strong { color:var(--accent); }
+  .swatch { display:inline-block; width:12px; height:12px; vertical-align:middle; margin-right:4px; }
+
+  /* ---- Nav: black bar, strong ---- */
+  nav { display:flex; justify-content:space-between; align-items:center; padding:14px 48px; background:var(--primary); color:var(--primary-foreground); }
+  .nav-logo { font-size:18px; font-weight:700; letter-spacing:-0.5px; }
+  .nav-right { display:flex; align-items:center; gap:24px; }
+  .nav-link { font-size:13px; font-weight:500; color:rgba(250,250,250,0.6); text-decoration:none; }
+  .nav-link:hover { color:#fff; }
+  .btn-nav { padding:7px 16px; background:var(--accent); color:#fff; font-size:12px; font-weight:700; text-decoration:none; letter-spacing:.3px; }
+
+  /* ---- Hero: massive type, full-width, no container ---- */
+  .hero { padding:120px 48px 100px; position:relative; }
+  .hero-inner { max-width:1200px; margin:0 auto; }
+  .hero h1 { font-size:clamp(48px, 8vw, 96px); font-weight:700; line-height:0.95; letter-spacing:-4px; margin-bottom:40px; }
+  .hero h1 .serif { font-family:var(--font-accent); font-weight:500; font-style:italic; letter-spacing:-2px; }
+  .hero h1 .red { color:var(--accent); }
+  .hero-bottom { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; }
+  .hero-desc { max-width:440px; }
+  .hero-desc p { font-size:17px; color:var(--muted-foreground); line-height:1.7; margin-bottom:28px; }
+  .hero-cta { display:flex; gap:16px; align-items:center; }
+  .btn-big { padding:16px 36px; background:var(--primary); color:var(--primary-foreground); font-size:15px; font-weight:700; text-decoration:none; letter-spacing:.2px; }
+  .btn-big:hover { background:#44403c; }
+  .btn-line { font-size:14px; font-weight:600; color:var(--foreground); text-decoration:none; border-bottom:2px solid var(--foreground); padding-bottom:2px; }
+  .btn-line:hover { color:var(--accent); border-color:var(--accent); }
+  .hero-right { display:flex; flex-direction:column; align-items:flex-end; }
+  .hero-metric { text-align:right; margin-bottom:24px; }
+  .hero-metric-val { font-size:64px; font-weight:700; letter-spacing:-3px; line-height:1; }
+  .hero-metric-label { font-size:13px; color:var(--muted-foreground); letter-spacing:.5px; }
+
+  /* ---- Divider with text ---- */
+  .text-divider { border-top:2px solid var(--primary); padding:10px 48px; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--muted-foreground); }
+
+  /* ---- Problem: horizontal scroll-like strip ---- */
+  .problem-strip { padding:60px 48px; background:var(--primary); color:var(--primary-foreground); }
+  .ps-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:2px; }
+  .ps-cell { padding:28px; background:rgba(255,255,255,0.03); }
+  .ps-cell .tool-name { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .ps-cell .tool-cost { font-size:24px; font-weight:700; letter-spacing:-1px; margin-bottom:2px; }
+  .ps-cell .tool-desc { font-size:12px; color:rgba(250,250,250,0.4); }
+  .ps-cell.replacement { background:var(--accent); }
+  .ps-cell.replacement .tool-desc { color:rgba(255,255,255,0.7); }
+
+  /* ---- How it works: numbered with huge numbers ---- */
+  .how { padding:96px 48px; max-width:1200px; margin:0 auto; }
+  .how-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px; padding-bottom:24px; border-bottom:2px solid var(--primary); }
+  .how-header h2 { font-size:14px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .how-header span { font-size:13px; color:var(--muted-foreground); }
+  .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .how-step { padding:0 40px 0 0; border-right:1px solid var(--border); }
+  .how-step:last-child { border:0; padding-right:0; padding-left:40px; }
+  .how-step:nth-child(2) { padding:0 40px; }
+  .how-num { font-size:80px; font-weight:700; letter-spacing:-4px; line-height:1; color:var(--muted); margin-bottom:16px; }
+  .how-step h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
+  .how-step p { font-size:14px; color:var(--muted-foreground); line-height:1.65; }
+
+  /* ---- Features: alternating left-right, large scale ---- */
+  .feat-section { max-width:1200px; margin:0 auto; padding:0 48px; }
+  .feat-row { display:grid; grid-template-columns:1fr 1fr; gap:0; min-height:240px; border-top:1px solid var(--border); }
+  .feat-row:last-child { border-bottom:1px solid var(--border); }
+  .feat-text { padding:48px 48px 48px 0; display:flex; flex-direction:column; justify-content:center; }
+  .feat-text h3 { font-size:24px; font-weight:700; letter-spacing:-.5px; margin-bottom:8px; }
+  .feat-text p { font-size:15px; color:var(--muted-foreground); line-height:1.7; max-width:400px; }
+  .feat-visual { padding:48px; background:var(--muted); display:flex; align-items:center; justify-content:center; }
+  .feat-row.reverse .feat-text { padding:48px 0 48px 48px; order:2; }
+  .feat-row.reverse .feat-visual { order:1; }
+
+  /* Mini data vis in feature blocks */
+  .mini-cluster { display:flex; gap:4px; flex-wrap:wrap; }
+  .mini-cluster .node { width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; }
+  .node-dead { background:var(--accent); color:#fff; }
+  .node-ref { background:var(--primary); color:var(--primary-foreground); }
+  .mini-timeline { display:flex; gap:0; align-items:center; }
+  .mt-block { height:32px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#fff; }
+  .mt-scan { background:var(--primary); width:80px; }
+  .mt-wait { background:var(--muted-foreground); width:60px; }
+  .mt-confirm { background:var(--success); width:80px; }
+  .mt-arrow { margin:0 4px; color:var(--muted-foreground); font-size:14px; }
+  .mini-email { font-family:var(--font-accent); font-size:14px; font-style:italic; color:var(--foreground); line-height:1.6; max-width:300px; padding:16px; border-left:3px solid var(--accent); }
+  .mini-pipe { display:flex; gap:2px; }
+  .pipe-block { padding:8px 12px; font-size:10px; font-weight:700; letter-spacing:.3px; }
+  .pipe-disc { background:var(--muted); color:var(--foreground); }
+  .pipe-email { background:#e5e5e5; color:var(--foreground); }
+  .pipe-sent { background:var(--primary); color:var(--primary-foreground); }
+  .pipe-won { background:var(--accent); color:#fff; }
+
+  /* ---- App preview: clean, sharp ---- */
+  .app-section { padding:96px 48px; background:var(--primary); }
+  .app-section h2 { font-size:14px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--primary-foreground); margin-bottom:40px; max-width:1200px; margin-left:auto; margin-right:auto; }
+  .app-frame { max-width:1200px; margin:0 auto; background:var(--surface); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.4); }
+  .af-bar { display:flex; align-items:center; gap:8px; padding:10px 16px; background:var(--muted); border-bottom:1px solid var(--border); }
+  .af-dot { width:8px; height:8px; border-radius:999px; background:var(--border); }
+  .af-body { display:grid; grid-template-columns:200px 1fr; min-height:440px; }
+  .af-side { padding:20px; border-right:1px solid var(--border); }
+  .af-s-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted-foreground); margin-bottom:8px; }
+  .af-s-item { padding:7px 10px; font-size:12px; font-weight:500; color:var(--muted-foreground); margin-bottom:1px; }
+  .af-s-item.active { background:var(--primary); color:var(--primary-foreground); font-weight:700; }
+  .af-main { padding:28px; }
+  .af-m-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+  .af-m-top h3 { font-size:20px; font-weight:700; letter-spacing:-.5px; }
+  .af-m-top p { font-size:12px; color:var(--muted-foreground); }
+  .af-m-btn { padding:8px 18px; background:var(--primary); color:var(--primary-foreground); font-size:11px; font-weight:700; border:none; letter-spacing:.3px; }
+  .af-stats { display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-bottom:24px; border:1px solid var(--border); }
+  .af-st { padding:16px; border-right:1px solid var(--border); }
+  .af-st:last-child { border:0; }
+  .af-st-val { font-size:24px; font-weight:700; letter-spacing:-1px; }
+  .af-st-label { font-size:10px; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:.5px; }
+  .af-table { width:100%; border-collapse:collapse; }
+  .af-table th { text-align:left; padding:10px 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted-foreground); border-bottom:2px solid var(--primary); }
+  .af-table td { padding:12px; font-size:12px; border-bottom:1px solid var(--border); }
+  .af-table .url { font-weight:700; }
+  .af-badge { padding:3px 8px; font-size:10px; font-weight:700; letter-spacing:.3px; }
+  .af-b-won { background:var(--accent); color:#fff; }
+  .af-b-sent { background:var(--primary); color:var(--primary-foreground); }
+  .af-b-conf { background:var(--muted); color:var(--foreground); }
+  .af-b-pend { background:var(--muted); color:var(--muted-foreground); }
+  .af-cluster { font-size:11px; font-weight:700; }
+
+  /* ---- Testimonials: oversized single quote ---- */
+  .quote-section { padding:96px 48px; max-width:1200px; margin:0 auto; border-top:2px solid var(--primary); }
+  .quote-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted-foreground); margin-bottom:40px; }
+  .big-quote { font-family:var(--font-accent); font-size:36px; font-weight:400; line-height:1.35; letter-spacing:-.5px; margin-bottom:20px; max-width:800px; }
+  .q-author { font-size:14px; font-weight:700; }
+  .q-role { font-size:13px; color:var(--muted-foreground); }
+  .side-quotes-row { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:48px; padding-top:40px; border-top:1px solid var(--border); }
+  .sq { }
+  .sq blockquote { font-size:16px; line-height:1.6; margin-bottom:12px; }
+  .sq-name { font-size:13px; font-weight:700; }
+  .sq-role { font-size:12px; color:var(--muted-foreground); }
+
+  /* ---- Pricing: stark, tabular ---- */
+  .pricing { padding:96px 48px; background:var(--muted); }
+  .pricing-inner { max-width:1200px; margin:0 auto; }
+  .pricing-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; padding-bottom:24px; border-bottom:2px solid var(--primary); }
+  .pricing-header h2 { font-size:14px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .pricing-header p { font-size:13px; color:var(--muted-foreground); }
+  .price-table { width:100%; max-width:800px; border-collapse:collapse; }
+  .price-table th { text-align:left; padding:12px 16px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted-foreground); border-bottom:2px solid var(--primary); }
+  .price-table td { padding:16px; border-bottom:1px solid var(--border); font-size:14px; }
+  .price-table .plan { font-weight:700; }
+  .price-table .amount { font-size:28px; font-weight:700; letter-spacing:-1px; }
+  .price-table .per { font-size:12px; color:var(--muted-foreground); }
+  .price-table .rec-row td { background:var(--surface); }
+  .rec-mark { display:inline-block; background:var(--accent); color:#fff; font-size:9px; font-weight:700; padding:2px 8px; letter-spacing:.5px; margin-left:8px; vertical-align:middle; }
+  .btn-t { padding:7px 18px; font-size:12px; font-weight:700; text-decoration:none; letter-spacing:.2px; }
+  .btn-t-out { background:transparent; border:1.5px solid var(--primary); color:var(--foreground); }
+  .btn-t-fill { background:var(--primary); color:var(--primary-foreground); border:1.5px solid var(--primary); }
+
+  /* ---- Final CTA: massive type ---- */
+  .final { padding:120px 48px; max-width:1200px; margin:0 auto; }
+  .final h2 { font-size:clamp(36px, 5vw, 64px); font-weight:700; line-height:0.98; letter-spacing:-3px; margin-bottom:24px; }
+  .final h2 .serif { font-family:var(--font-accent); font-weight:500; font-style:italic; letter-spacing:-1px; }
+  .final p { font-size:16px; color:var(--muted-foreground); margin-bottom:32px; max-width:440px; }
+
+  /* ---- Components ---- */
+  .showcase { padding:80px 48px; border-top:2px solid var(--primary); max-width:1200px; margin:0 auto; }
+  .show-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted-foreground); margin-bottom:40px; }
+  .show-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
+  .show-sec h3 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted-foreground); margin-bottom:12px; }
+  .show-btns { display:flex; flex-wrap:wrap; gap:6px; }
+  .bs { padding:8px 16px; font-size:12px; font-weight:700; font-family:inherit; cursor:pointer; border:none; letter-spacing:.2px; }
+  .bs-blk { background:var(--primary); color:var(--primary-foreground); }
+  .bs-red { background:var(--accent); color:#fff; }
+  .bs-out { background:transparent; border:1.5px solid var(--primary); color:var(--foreground); }
+  .bs-ghost { background:transparent; color:var(--muted-foreground); }
+  .show-badges { display:flex; gap:6px; flex-wrap:wrap; }
+  .sb { padding:3px 8px; font-size:10px; font-weight:700; letter-spacing:.3px; }
+  .sb-blk { background:var(--primary); color:var(--primary-foreground); }
+  .sb-red { background:var(--accent); color:#fff; }
+  .sb-gray { background:var(--muted); color:var(--foreground); }
+  .sb-muted { background:var(--muted); color:var(--muted-foreground); }
+  .show-input { padding:10px 14px; border:2px solid var(--primary); font-size:13px; font-family:inherit; width:100%; outline:none; background:var(--surface); }
+  .show-input:focus { box-shadow:0 0 0 2px var(--accent); border-color:var(--accent); }
+  .show-card { padding:20px; border:1px solid var(--border); background:var(--surface); }
+  .show-card h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .show-card p { font-size:12px; color:var(--muted-foreground); }
+  .show-type { }
+  .show-type .display { font-size:48px; font-weight:700; letter-spacing:-2px; line-height:1; margin-bottom:8px; }
+  .show-type .serif-sample { font-family:var(--font-accent); font-size:28px; font-style:italic; color:var(--muted-foreground); }
+
+  footer { padding:24px 48px; border-top:2px solid var(--primary); display:flex; justify-content:space-between; font-size:12px; color:var(--muted-foreground); }
+  footer a { color:var(--muted-foreground); text-decoration:none; }
+  footer a:hover { color:var(--foreground); }
+  .f-links { display:flex; gap:20px; }
+</style>
+</head>
+<body>
+<div class="token-bar"><div><strong>Direction C:</strong> Deep Graphite</div><div><samp>Display:</samp> Space Grotesk</div><div><samp>Accent serif:</samp> Newsreader</div><div><samp>Colors:</samp> Deep Graphite (#292524) + <span class="swatch" style="background:#dc2626"></span>Red only</div><div><samp>Radius:</samp> 0px</div><div><samp>Approach:</samp> Swiss/Brutalist</div></div>
+
+<nav>
+  <div class="nav-logo">LinkReclaim</div>
+  <div class="nav-right"><a class="nav-link" href="#">How It Works</a><a class="nav-link" href="#">Pricing</a><a class="nav-link" href="#">FAQ</a><a class="btn-nav" href="#">START FREE</a></div>
+</nav>
+
+<!-- Hero: massive mixed-weight type -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Dead links<br>are <span class="serif">backlinks</span><br><span class="red">waiting.</span></h1>
+    <div class="hero-bottom">
+      <div class="hero-desc">
+        <p>The complete broken link building workflow. Scan any niche, find confirmed 404s, get verified emails, send AI-personalized outreach. One tool replaces four subscriptions.</p>
+        <div class="hero-cta">
+          <a class="btn-big" href="#">Start my free scan &rarr;</a>
+          <a class="btn-line" href="#">How it works</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-metric"><div class="hero-metric-val">47</div><div class="hero-metric-label">Avg. opportunities per scan</div></div>
+        <div class="hero-metric"><div class="hero-metric-val">12&times;</div><div class="hero-metric-label">Cluster expansion multiplier</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="text-divider">THE PROBLEM</div>
+
+<!-- Problem: cost comparison strip -->
+<section class="problem-strip">
+  <div class="ps-inner">
+    <div class="ps-cell"><div class="tool-name">Ahrefs</div><div class="tool-cost">$500/mo</div><div class="tool-desc">Link discovery</div></div>
+    <div class="ps-cell"><div class="tool-name">Hunter.io</div><div class="tool-cost">$49/mo</div><div class="tool-desc">Email finding</div></div>
+    <div class="ps-cell"><div class="tool-name">ChatGPT</div><div class="tool-cost">$20/mo</div><div class="tool-desc">Outreach copy</div></div>
+    <div class="ps-cell replacement"><div class="tool-name">LinkReclaim</div><div class="tool-cost">$0.40</div><div class="tool-desc">Per prospect. Everything included.</div></div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how">
+  <div class="how-header"><h2>How It Works</h2><span>Three steps. One tool.</span></div>
+  <div class="how-grid">
+    <div class="how-step"><div class="how-num">01</div><h3>Scan</h3><p>Enter a keyword. We crawl top-ranking pages, check every outbound link, and confirm 404s with a 30-minute recheck. No false positives.</p></div>
+    <div class="how-step"><div class="how-num">02</div><h3>Expand</h3><p>Dead links matched to your content. Reverse-search finds every site linking to the same dead URL. Hunter.io discovers the webmaster's email.</p></div>
+    <div class="how-step"><div class="how-num">03</div><h3>Send</h3><p>AI writes a pitch referencing the broken link, the dead content (via Wayback Machine), and your replacement page. You edit and send.</p></div>
+  </div>
+</section>
+
+<!-- Features: alternating rows with visuals -->
+<section class="feat-section">
+  <div class="feat-row">
+    <div class="feat-text"><h3>Cluster expansion</h3><p>One dead link is often referenced by dozens of sites. We reverse-search each dead URL to find every referring page. One discovery multiplies into 10, 20, 50+ prospects.</p></div>
+    <div class="feat-visual">
+      <div class="mini-cluster">
+        <div class="node node-dead">404</div>
+        <div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div>
+        <div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div><div class="node node-ref">ref</div>
+        <div class="node node-ref">ref</div><div class="node node-ref">ref</div>
+      </div>
+    </div>
+  </div>
+  <div class="feat-row reverse">
+    <div class="feat-text"><h3>Two-pass confirmation</h3><p>Every 404 is rechecked 30-60 minutes later. Server hiccups, CDN misconfigs, and rate-limited responses are filtered out. Only confirmed dead links make your list.</p></div>
+    <div class="feat-visual">
+      <div class="mini-timeline">
+        <div class="mt-block mt-scan">SCAN</div>
+        <span class="mt-arrow">&rarr;</span>
+        <div class="mt-block mt-wait">30 min</div>
+        <span class="mt-arrow">&rarr;</span>
+        <div class="mt-block mt-confirm">CONFIRMED</div>
+      </div>
+    </div>
+  </div>
+  <div class="feat-row">
+    <div class="feat-text"><h3>AI-personalized outreach</h3><p>Each email references the specific broken link URL, what the dead page was about (via Wayback Machine), and explains why your content is a relevant replacement.</p></div>
+    <div class="feat-visual">
+      <div class="mini-email">"Hi — I noticed your article links to moz.com/link-guide, which is now returning a 404. It used to be a comprehensive link building guide. I recently published a similar resource that could work as a replacement..."</div>
+    </div>
+  </div>
+  <div class="feat-row reverse">
+    <div class="feat-text"><h3>Campaign pipeline</h3><p>Track every prospect through the full lifecycle. Discovered, email found, outreach sent, replied, link acquired. Notes, follow-ups, and status management built in.</p></div>
+    <div class="feat-visual">
+      <div class="mini-pipe">
+        <div class="pipe-block pipe-disc">DISCOVERED</div>
+        <div class="pipe-block pipe-email">EMAIL</div>
+        <div class="pipe-block pipe-sent">SENT</div>
+        <div class="pipe-block pipe-won">WON</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- App preview -->
+<section class="app-section">
+  <h2>CAMPAIGN DASHBOARD</h2>
+  <div class="app-frame">
+    <div class="af-bar"><div class="af-dot"></div><div class="af-dot"></div><div class="af-dot"></div></div>
+    <div class="af-body">
+      <div class="af-side">
+        <div class="af-s-label">Navigation</div>
+        <div class="af-s-item active">Campaigns</div>
+        <div class="af-s-item">My Content</div>
+        <div class="af-s-item">Outreach</div>
+        <div class="af-s-item">Settings</div>
+        <div style="margin-top:16px"><div class="af-s-label">Campaigns</div></div>
+        <div class="af-s-item active">SaaS Link Building</div>
+        <div class="af-s-item">Content Marketing</div>
+      </div>
+      <div class="af-main">
+        <div class="af-m-top"><div><h3>SaaS Link Building</h3><p>23 prospects &middot; Feb 12</p></div><button class="af-m-btn">+ NEW SCAN</button></div>
+        <div class="af-stats">
+          <div class="af-st"><div class="af-st-val">23</div><div class="af-st-label">Found</div></div>
+          <div class="af-st"><div class="af-st-val">14</div><div class="af-st-label">Emails</div></div>
+          <div class="af-st"><div class="af-st-val">8</div><div class="af-st-label">Sent</div></div>
+          <div class="af-st"><div class="af-st-val">3</div><div class="af-st-label">Replied</div></div>
+          <div class="af-st"><div class="af-st-val" style="color:var(--accent)">2</div><div class="af-st-label">Won</div></div>
+        </div>
+        <table class="af-table">
+          <tr><th>Prospect</th><th>Dead URL</th><th>Cluster</th><th>Score</th><th>Status</th></tr>
+          <tr><td class="url">backlinko.com</td><td>/seo-tools-list</td><td class="af-cluster">12</td><td>94</td><td><span class="af-badge af-b-won">WON</span></td></tr>
+          <tr><td class="url">moz.com</td><td>/link-building-guide</td><td class="af-cluster">8</td><td>87</td><td><span class="af-badge af-b-sent">SENT</span></td></tr>
+          <tr><td class="url">searchenginejournal.com</td><td>/outreach-templates</td><td class="af-cluster">22</td><td>82</td><td><span class="af-badge af-b-conf">CONFIRMED</span></td></tr>
+          <tr><td class="url">neilpatel.com</td><td>/broken-links-2024</td><td class="af-cluster">5</td><td>71</td><td><span class="af-badge af-b-pend">PENDING</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="quote-section">
+  <div class="quote-label">TESTIMONIALS</div>
+  <div class="big-quote">"Found 47 broken link opportunities in my first scan. Sent 12 outreach emails that afternoon and landed 3 backlinks within a week. This replaced my entire Ahrefs workflow for broken link prospecting."</div>
+  <div class="q-author">Mike R.</div>
+  <div class="q-role">Freelance SEO Consultant</div>
+  <div class="side-quotes-row">
+    <div class="sq"><blockquote>"One dead resource page had 22 sites linking to it. That's 22 outreach opportunities from a single broken link."</blockquote><div class="sq-name">Sarah L.</div><div class="sq-role">Content Lead, Startup</div></div>
+    <div class="sq"><blockquote>"Cancelled my $500/mo Ahrefs subscription after the first week. This does what I need at a fraction of the cost."</blockquote><div class="sq-name">James K.</div><div class="sq-role">Solo Founder</div></div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header"><h2>PRICING</h2><p>Scanning is free. Pay per prospect unlock.</p></div>
+    <table class="price-table">
+      <tr><th>Plan</th><th>Prospects</th><th>Price</th><th>Per Prospect</th><th></th></tr>
+      <tr><td class="plan">Free</td><td>3 unlocks</td><td>$0</td><td>—</td><td><a class="btn-t btn-t-out" href="#">Start free</a></td></tr>
+      <tr><td class="plan">Starter</td><td>50 unlocks</td><td class="amount">$29</td><td class="per">$0.58</td><td><a class="btn-t btn-t-out" href="#">Get Starter</a></td></tr>
+      <tr class="rec-row"><td class="plan">Pro <span class="rec-mark">BEST VALUE</span></td><td>200 unlocks</td><td class="amount">$79</td><td class="per">$0.40</td><td><a class="btn-t btn-t-fill" href="#">Get Pro</a></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final">
+  <h2>Start with three<br><span class="serif">free prospects.</span></h2>
+  <p>No credit card. No subscription. Run unlimited scans, unlock 3 full prospects — email, outreach, and tracking — at no cost.</p>
+  <a class="btn-big" href="#">Start my free scan &rarr;</a>
+</section>
+
+<!-- Components -->
+<section class="showcase">
+  <div class="show-label">DESIGN SYSTEM</div>
+  <div class="show-grid">
+    <div class="show-sec">
+      <h3>Typography</h3>
+      <div class="show-type"><div class="display">Grotesk</div><div class="serif-sample">Newsreader italic</div></div>
+    </div>
+    <div class="show-sec">
+      <h3>Buttons</h3>
+      <div class="show-btns"><button class="bs bs-blk">Primary</button><button class="bs bs-red">Accent</button><button class="bs bs-out">Outline</button><button class="bs bs-ghost">Ghost</button></div>
+    </div>
+    <div class="show-sec">
+      <h3>Badges</h3>
+      <div class="show-badges"><span class="sb sb-blk">SENT</span><span class="sb sb-red">WON</span><span class="sb sb-gray">CONFIRMED</span><span class="sb sb-muted">PENDING</span></div>
+    </div>
+    <div class="show-sec">
+      <h3>Input</h3>
+      <input class="show-input" type="text" placeholder="Enter a niche keyword...">
+    </div>
+  </div>
+</section>
+
+<footer><span>&copy; 2026 LinkReclaim</span><div class="f-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Direction 8 — Monochrome &amp; Sharp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #18181b;
+    --primary-foreground: #fafafa;
+    --accent: #6366f1;
+    --foreground: #09090b;
+    --background: #ffffff;
+    --muted: #f4f4f5;
+    --muted-foreground: #71717a;
+    --border: #e4e4e7;
+    --card: #ffffff;
+    --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --info: #2563eb;
+    --radius: 4px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Space Grotesk',system-ui,sans-serif; color:var(--foreground); background:var(--background); line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+  .token-bar { background:var(--primary); color:rgba(250,250,250,0.5); padding:14px 32px; display:flex; gap:24px; flex-wrap:wrap; font-size:13px; }
+  .token-bar strong { color:#fff; }
+  .swatch { display:inline-block; width:16px; height:16px; border-radius:2px; vertical-align:middle; margin-right:6px; }
+
+  nav { display:flex; justify-content:space-between; align-items:center; padding:14px 48px; border-bottom:1px solid var(--border); }
+  .nav-logo { font-size:18px; font-weight:700; letter-spacing:-.3px; }
+  .nav-links { display:flex; gap:24px; font-size:13px; font-weight:500; color:var(--muted-foreground); letter-spacing:.2px; }
+  .nav-links a { text-decoration:none; color:inherit; }
+  .nav-links a:hover { color:var(--foreground); }
+
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:var(--radius); font-size:13px; font-weight:600; text-decoration:none; border:none; cursor:pointer; font-family:inherit; transition:all .12s; letter-spacing:.2px; }
+  .btn-primary { background:var(--primary); color:var(--primary-foreground); }
+  .btn-primary:hover { background:#27272a; }
+  .btn-outline { background:transparent; color:var(--foreground); border:1px solid var(--border); }
+  .btn-outline:hover { background:var(--muted); }
+  .btn-ghost { background:transparent; color:var(--muted-foreground); }
+  .btn-ghost:hover { background:var(--muted); color:var(--foreground); }
+  .btn-danger { background:rgba(220,38,38,0.06); color:var(--danger); }
+  .btn-accent { background:var(--accent); color:#fff; }
+  .btn-accent:hover { background:#4f46e5; }
+  .btn-lg { padding:12px 24px; font-size:14px; }
+
+  .hero { padding:96px 48px 80px; max-width:680px; margin:0 auto; text-align:center; }
+  .hero h1 { font-size:44px; font-weight:700; line-height:1.1; letter-spacing:-1.5px; margin-bottom:18px; }
+  .hero p { font-size:17px; color:var(--muted-foreground); max-width:500px; margin:0 auto 32px; line-height:1.65; }
+  .hero-cta { display:flex; gap:10px; justify-content:center; }
+  .hero-sub { font-size:12px; color:var(--muted-foreground); margin-top:14px; letter-spacing:.2px; }
+
+  .divider { max-width:100%; border:0; border-top:1px solid var(--border); }
+
+  .logos { padding:36px 48px; text-align:center; }
+  .logos p { font-size:11px; font-weight:600; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:2px; margin-bottom:16px; }
+  .logo-row { display:flex; justify-content:center; gap:40px; opacity:.3; font-size:15px; font-weight:600; }
+
+  .problem { padding:64px 48px; max-width:600px; margin:0 auto; text-align:center; }
+  .problem h2 { font-size:24px; font-weight:700; letter-spacing:-.5px; margin-bottom:12px; }
+  .problem p { font-size:15px; color:var(--muted-foreground); line-height:1.7; }
+  .tools-row { display:flex; gap:8px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
+  .tool-chip { padding:6px 12px; background:var(--muted); border-radius:var(--radius); font-size:12px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .tool-chip .x { color:var(--danger); font-size:10px; }
+
+  .steps { padding:64px 48px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .steps h2 { font-size:24px; font-weight:700; text-align:center; letter-spacing:-.5px; margin-bottom:40px; }
+  .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); max-width:900px; margin:0 auto; }
+  .step { padding:28px; background:var(--background); }
+  .step-label { font-size:11px; font-weight:700; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .step h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .step p { font-size:13px; color:var(--muted-foreground); line-height:1.6; }
+
+  .features { padding:64px 48px; }
+  .features h2 { font-size:24px; font-weight:700; text-align:center; letter-spacing:-.5px; margin-bottom:40px; }
+  .feat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); max-width:900px; margin:0 auto; }
+  .feat { padding:28px; background:var(--background); }
+  .feat h3 { font-size:14px; font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .feat h3 .dot { width:6px; height:6px; border-radius:999px; background:var(--accent); flex-shrink:0; }
+  .feat p { font-size:13px; color:var(--muted-foreground); line-height:1.6; }
+
+  .app-preview { padding:64px 48px; background:var(--primary); }
+  .app-preview h2 { font-size:24px; font-weight:700; text-align:center; letter-spacing:-.5px; margin-bottom:32px; color:var(--primary-foreground); }
+  .app-mock { max-width:900px; margin:0 auto; background:var(--card); border-radius:6px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.4); }
+  .mock-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; background:#27272a; }
+  .dot-s { width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,0.15); }
+  .mock-body { padding:20px; display:grid; grid-template-columns:160px 1fr; gap:16px; min-height:280px; font-size:13px; }
+  .sb-item { padding:7px 10px; border-radius:var(--radius); font-size:12px; font-weight:500; color:var(--muted-foreground); margin-bottom:1px; }
+  .sb-item.active { background:var(--muted); color:var(--foreground); font-weight:600; }
+  .main h3 { font-size:16px; font-weight:700; margin-bottom:3px; }
+  .main>p { font-size:12px; color:var(--muted-foreground); margin-bottom:14px; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px; }
+  .st { padding:10px; background:var(--muted); border-radius:var(--radius); }
+  .st-label { font-size:10px; color:var(--muted-foreground); font-weight:600; text-transform:uppercase; letter-spacing:.5px; }
+  .st-val { font-size:20px; font-weight:700; }
+  .tbl { width:100%; border-collapse:collapse; font-size:12px; }
+  .tbl th { text-align:left; padding:6px 8px; border-bottom:1px solid var(--border); font-weight:600; font-size:11px; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:.3px; }
+  .tbl td { padding:8px; border-bottom:1px solid var(--border); }
+  .badge { display:inline-block; padding:2px 8px; border-radius:var(--radius); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.3px; }
+  .b-green { background:rgba(22,163,74,0.08); color:var(--success); }
+  .b-amber { background:rgba(202,138,4,0.08); color:var(--warning); }
+  .b-blue { background:rgba(37,99,235,0.08); color:var(--info); }
+
+  .testimonials { padding:64px 48px; }
+  .testimonials h2 { font-size:24px; font-weight:700; text-align:center; letter-spacing:-.5px; margin-bottom:36px; }
+  .t-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:900px; margin:0 auto; }
+  .t-card { padding:20px; border:1px solid var(--border); border-radius:var(--radius); }
+  .t-card blockquote { font-size:13px; line-height:1.7; margin-bottom:12px; }
+  .t-name { font-size:12px; font-weight:700; }
+  .t-role { font-size:11px; color:var(--muted-foreground); }
+
+  .pricing { padding:64px 48px; border-top:1px solid var(--border); text-align:center; }
+  .pricing h2 { font-size:24px; font-weight:700; letter-spacing:-.5px; margin-bottom:8px; }
+  .pricing>p { font-size:14px; color:var(--muted-foreground); margin-bottom:36px; }
+  .p-row { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; max-width:640px; margin:0 auto; text-align:left; }
+  .p-card { padding:28px; border:1px solid var(--border); border-radius:var(--radius); }
+  .p-card.pop { border-color:var(--foreground); border-width:2px; }
+  .p-card .tier { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted-foreground); margin-bottom:6px; }
+  .p-card .price { font-size:36px; font-weight:700; letter-spacing:-1.5px; }
+  .p-card .price span { font-size:13px; font-weight:500; color:var(--muted-foreground); }
+  .p-card .blurb { font-size:13px; color:var(--muted-foreground); margin:6px 0 18px; }
+  .p-card ul { list-style:none; padding:0; margin-bottom:20px; }
+  .p-card li { font-size:13px; padding:4px 0; }
+  .p-card li::before { content:"—"; color:var(--muted-foreground); margin-right:8px; }
+  .pop-badge { display:inline-block; background:var(--primary); color:var(--primary-foreground); font-size:10px; font-weight:700; padding:3px 10px; border-radius:var(--radius); margin-bottom:8px; text-transform:uppercase; letter-spacing:.8px; }
+
+  .final-cta { padding:64px 48px; text-align:center; background:var(--muted); }
+  .final-cta h2 { font-size:24px; font-weight:700; letter-spacing:-.5px; margin-bottom:10px; }
+  .final-cta p { font-size:14px; color:var(--muted-foreground); margin-bottom:24px; }
+
+  .showcase { padding:64px 48px; border-top:1px solid var(--border); }
+  .showcase h2 { font-size:22px; font-weight:700; text-align:center; margin-bottom:36px; }
+  .s-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:700px; margin:0 auto; }
+  .s-section h3 { font-size:11px; font-weight:600; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+  .s-btns { display:flex; flex-wrap:wrap; gap:6px; }
+  .input-d { padding:9px 12px; border:1px solid var(--border); border-radius:var(--radius); font-size:13px; font-family:inherit; width:100%; outline:none; }
+  .input-d:focus { border-color:var(--foreground); box-shadow:0 0 0 1px var(--foreground); }
+  .card-d { padding:16px; border:1px solid var(--border); border-radius:var(--radius); }
+  .card-d h4 { font-size:14px; font-weight:700; margin-bottom:3px; }
+  .card-d p { font-size:12px; color:var(--muted-foreground); }
+
+  footer { padding:32px 48px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:12px; color:var(--muted-foreground); }
+  footer a { color:var(--muted-foreground); text-decoration:none; }
+  footer a:hover { color:var(--foreground); }
+  .f-links { display:flex; gap:20px; }
+</style>
+</head>
+<body>
+<div class="token-bar"><div><strong>Brand Direction 8:</strong> Monochrome &amp; Sharp</div><div><samp>Font:</samp> Space Grotesk</div><div><samp>Tone:</samp> Minimal/Developer</div><div><samp>Primary:</samp> <span class="swatch" style="background:#18181b"></span>#18181b (Zinc 900)</div><div><samp>Accent:</samp> <span class="swatch" style="background:#6366f1"></span>#6366f1 (Indigo 500)</div><div><samp>Radius:</samp> 4px</div></div>
+
+<nav><div class="nav-logo">LinkReclaim</div><div class="nav-links"><a href="#">How It Works</a><a href="#">Pricing</a><a href="#">FAQ</a></div><a class="btn btn-primary" href="#">Start Free &rarr;</a></nav>
+
+<section class="hero">
+  <h1>Find broken links. Send better outreach. Win backlinks.</h1>
+  <p>The complete broken link building workflow in one tool. Scan, match, email, track. No Ahrefs subscription required.</p>
+  <div class="hero-cta"><a class="btn btn-primary btn-lg" href="#">Start my free scan &rarr;</a><a class="btn btn-outline btn-lg" href="#">How it works</a></div>
+  <p class="hero-sub">3 free prospect unlocks &middot; No credit card &middot; No subscription</p>
+</section>
+
+<hr class="divider">
+
+<section class="logos"><p>Trusted by</p><div class="logo-row"><span>Ahrefs Users</span><span>NichePursuits</span><span>AuthorityHacker</span><span>Fat Stacks</span></div></section>
+
+<section class="problem">
+  <h2>Four tools. One workflow. Zero reason.</h2>
+  <p>Broken link building is proven but the tooling is absurdly fragmented.</p>
+  <div class="tools-row"><div class="tool-chip"><span class="x">&#10005;</span> Ahrefs</div><div class="tool-chip"><span class="x">&#10005;</span> Hunter.io</div><div class="tool-chip"><span class="x">&#10005;</span> ChatGPT</div><div class="tool-chip"><span class="x">&#10005;</span> Sheets</div></div>
+</section>
+
+<section class="steps">
+  <h2>Three steps. One tool.</h2>
+  <div class="steps-grid">
+    <div class="step"><div class="step-label">Step 01</div><h3>Scan a keyword</h3><p>Crawl top pages, check outbound links, confirm 404s with 30-min recheck.</p></div>
+    <div class="step"><div class="step-label">Step 02</div><h3>Match + discover</h3><p>Dead links matched to your content. Clusters expanded. Emails found.</p></div>
+    <div class="step"><div class="step-label">Step 03</div><h3>Send outreach</h3><p>AI pitch with broken link, Wayback context, your replacement. Edit and send.</p></div>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Core capabilities</h2>
+  <div class="feat-grid">
+    <div class="feat"><h3><span class="dot"></span>Cluster expansion</h3><p>Reverse-search dead URLs to find every site linking to them. 1 find → 50+ prospects.</p></div>
+    <div class="feat"><h3><span class="dot"></span>False positive filtering</h3><p>Two-pass 404 confirmation. 30-60 minute recheck. Only confirmed dead links.</p></div>
+    <div class="feat"><h3><span class="dot"></span>Email discovery</h3><p>Hunter.io built in. Verified emails per prospect domain.</p></div>
+    <div class="feat"><h3><span class="dot"></span>Campaign tracking</h3><p>Full pipeline: Discovered → Email → Sent → Replied → Won.</p></div>
+  </div>
+</section>
+
+<section class="app-preview">
+  <h2>Campaign dashboard</h2>
+  <div class="app-mock">
+    <div class="mock-bar"><div class="dot-s"></div><div class="dot-s"></div><div class="dot-s"></div></div>
+    <div class="mock-body">
+      <div><div class="sb-item active">Campaigns</div><div class="sb-item">Content</div><div class="sb-item">Outreach</div><div class="sb-item">Settings</div></div>
+      <div class="main">
+        <h3>SaaS Link Building</h3><p>23 prospects &middot; 14 emails &middot; 8 sent</p>
+        <div class="stats"><div class="st"><div class="st-label">Found</div><div class="st-val">23</div></div><div class="st"><div class="st-label">Emails</div><div class="st-val">14</div></div><div class="st"><div class="st-label">Sent</div><div class="st-val">8</div></div><div class="st"><div class="st-label">Won</div><div class="st-val" style="color:var(--success)">2</div></div></div>
+        <table class="tbl"><tr><th>Prospect</th><th>Dead Link</th><th>Cluster</th><th>Status</th></tr><tr><td>backlinko.com</td><td>/seo-tools-list</td><td>12</td><td><span class="badge b-blue">Sent</span></td></tr><tr><td>moz.com</td><td>/link-building-guide</td><td>8</td><td><span class="badge b-green">Confirmed</span></td></tr><tr><td>neilpatel.com</td><td>/outreach-templates</td><td>5</td><td><span class="badge b-amber">Pending</span></td></tr></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>What people say</h2>
+  <div class="t-grid">
+    <div class="t-card"><blockquote>"47 opportunities. First scan. 3 backlinks in a week."</blockquote><div class="t-name">Mike R.</div><div class="t-role">Freelance SEO</div></div>
+    <div class="t-card"><blockquote>"22 prospects from one dead resource page. Cluster expansion is absurd."</blockquote><div class="t-name">Sarah L.</div><div class="t-role">Content Lead</div></div>
+    <div class="t-card"><blockquote>"Cancelled $500/mo Ahrefs. This does what I need."</blockquote><div class="t-name">James K.</div><div class="t-role">Solo Founder</div></div>
+  </div>
+</section>
+
+<section class="pricing">
+  <h2>No subscriptions</h2>
+  <p>Scan free. Pay per prospect unlock.</p>
+  <div class="p-row">
+    <div class="p-card"><div class="tier">Starter</div><div class="price">$29 <span>/ 50</span></div><div class="blurb">Test the workflow</div><ul><li>50 unlocks</li><li>Email discovery</li><li>AI outreach</li><li>No expiration</li></ul><a class="btn btn-outline" href="#" style="width:100%;justify-content:center;">Get Starter</a></div>
+    <div class="p-card pop"><div class="pop-badge">Recommended</div><div class="tier">Pro</div><div class="price">$79 <span>/ 200</span></div><div class="blurb">Weekly campaigns</div><ul><li>200 unlocks</li><li>Email discovery</li><li>AI outreach</li><li>No expiration</li></ul><a class="btn btn-primary" href="#" style="width:100%;justify-content:center;">Get Pro</a></div>
+  </div>
+</section>
+
+<section class="final-cta"><h2>3 free prospects. Start now.</h2><p>Unlimited scans. Full prospect list. 3 complete unlocks free.</p><a class="btn btn-primary btn-lg" href="#">Start my free scan &rarr;</a></section>
+
+<section class="showcase">
+  <h2>Components</h2>
+  <div class="s-grid">
+    <div class="s-section"><h3>Buttons</h3><div class="s-btns"><button class="btn btn-primary">Primary</button><button class="btn btn-accent">Accent</button><button class="btn btn-outline">Outline</button><button class="btn btn-ghost">Ghost</button><button class="btn btn-danger">Danger</button></div></div>
+    <div class="s-section"><h3>Badges</h3><div class="s-btns"><span class="badge b-green">Confirmed</span><span class="badge b-amber">Pending</span><span class="badge b-blue">Sent</span></div></div>
+    <div class="s-section"><h3>Input</h3><input class="input-d" type="text" placeholder="Enter a niche keyword..."></div>
+    <div class="s-section"><h3>Card</h3><div class="card-d"><h4>backlinko.com</h4><p>12 broken links &middot; DR 78</p></div></div>
+  </div>
+</section>
+
+<footer><span>&copy; 2026 LinkReclaim</span><div class="f-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div></footer>
+</body>
+</html>
