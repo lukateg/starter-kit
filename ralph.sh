@@ -55,11 +55,15 @@ fi
 
 # Count total and remaining tasks
 count_remaining() {
-  grep -c '^\- \[ \]' .ralph/TASKS.md 2>/dev/null || echo 0
+  local n
+  n=$(grep -c '^\- \[ \]' .ralph/TASKS.md 2>/dev/null) || true
+  echo "${n:-0}"
 }
 
 count_completed() {
-  grep -c '^\- \[x\]' .ralph/TASKS.md 2>/dev/null || echo 0
+  local n
+  n=$(grep -c '^\- \[x\]' .ralph/TASKS.md 2>/dev/null) || true
+  echo "${n:-0}"
 }
 
 TOTAL_TASKS=$(($(count_remaining) + $(count_completed)))
