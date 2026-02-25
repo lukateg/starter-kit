@@ -16,7 +16,21 @@ import { v } from "convex/values";
 import { Resend } from "resend";
 import { EMAIL_SEQUENCES, EMAIL_TYPES } from "./emailEvents";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-initialized — don't construct at module level or Convex push
+// crashes when RESEND_API_KEY is not set (e.g., during initial setup).
+let _resend: Resend | null = null;
+function getResend(): Resend {
+  if (!_resend) {
+    const key = process.env.RESEND_API_KEY;
+    if (!key) {
+      throw new Error(
+        "RESEND_API_KEY is not set. Add it to your Convex environment variables."
+      );
+    }
+    _resend = new Resend(key);
+  }
+  return _resend;
+}
 
 // ============================================
 // Types
@@ -253,7 +267,7 @@ export const sendLowCreditsWarning = internalAction({
         `,
       });
 
-      const { data, error } = (await resend.emails.send({
+      const { data, error } = (await getResend().emails.send({
         from: FROM_ADDRESS,
         to: args.userEmail,
         subject: "Your credits are running low",
@@ -377,7 +391,7 @@ export const sendSupportTicketNotification = internalAction({
         `,
       });
 
-      const { error } = (await resend.emails.send({
+      const { error } = (await getResend().emails.send({
         from: FROM_ADDRESS,
         to: adminEmail,
         subject: `[Support] ${args.subject} (${args.priority})`,
@@ -531,7 +545,7 @@ export const sendOnboardingReminderEmail = internalAction({
         body: template.body(args.userName),
       });
 
-      const { data, error } = (await resend.emails.send({
+      const { data, error } = (await getResend().emails.send({
         from: FROM_ADDRESS,
         to: args.userEmail,
         subject: template.subject,
@@ -719,7 +733,7 @@ export const sendInactiveUserEmail = internalAction({
         body: template.body(args.userName, args.daysSinceActive),
       });
 
-      const { data, error } = (await resend.emails.send({
+      const { data, error } = (await getResend().emails.send({
         from: FROM_ADDRESS,
         to: args.userEmail,
         subject: template.subject,
@@ -929,7 +943,7 @@ export const sendWelcomeEmail = internalAction({
         body: template.body(displayName),
       });
 
-      const { data, error } = (await resend.emails.send({
+      const { data, error } = (await getResend().emails.send({
         from: FROM_ADDRESS,
         to: args.email,
         subject: template.subject,
